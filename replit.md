@@ -56,3 +56,4 @@ An interactive construction calculator webpage built with HTML, CSS, JavaScript,
 - Added subsection dividers to visually separate grouped sections
 - Updated section backgrounds to light gray (#f5f5f5) to match outer container
 - Adjusted text colors to dark (#2d2d2d) for proper contrast on light background
+- Added 1px separating lines between major sections for clear visual organization

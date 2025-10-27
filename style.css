@@ -29,6 +29,12 @@ body {
     padding: 30px;
     margin-bottom: 20px;
     border-radius: 2px;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 40px;
+}
+
+.section:last-of-type {
+    border-bottom: none;
 }
 
 .section-header {
