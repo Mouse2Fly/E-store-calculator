@@ -38,6 +38,11 @@ body {
     margin-bottom: 25px;
 }
 
+.subsection-divider {
+    border-top: 1px solid #4a4a4a;
+    margin: 35px 0;
+}
+
 .section-number {
     background-color: #b8860b;
     color: #2d2d2d;
