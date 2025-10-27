@@ -11,7 +11,8 @@ An interactive construction calculator webpage built with HTML, CSS, JavaScript,
 ## Design Features
 - Page background: White (#ffffff)
 - Calculator container: Light gray (#f5f5f5) at 66.66% width (2/3 of screen)
-- Sections: Dark background (#2d2d2d) with golden accent color (#b8860b)
+- Sections: Light gray background (#f5f5f5) matching outer container
+- Interactive elements: Dark buttons/dropdowns (#2d2d2d, #4a4a4a) with golden accent color (#b8860b)
 - Responsive design with mobile breakpoints
 
 ## Calculator Sections
@@ -53,3 +54,5 @@ An interactive construction calculator webpage built with HTML, CSS, JavaScript,
 - 2025-10-27: Initial creation of calculator with all 6 parts matching design screenshots
 - Implemented jQuery for interactive elements
 - Added subsection dividers to visually separate grouped sections
+- Updated section backgrounds to light gray (#f5f5f5) to match outer container
+- Adjusted text colors to dark (#2d2d2d) for proper contrast on light background
