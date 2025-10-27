@@ -1,300 +1,180 @@
-/<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construction Calculator</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Construction Calculator WordPress Plugin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        h2 {
+            color: #4a5568;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        p {
+            color: #718096;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .plugin-badge {
+            display: inline-block;
+            background: #b8860b;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .features {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            padding: 8px 0;
+            color: #4a5568;
+            position: relative;
+            padding-left: 25px;
+        }
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #b8860b;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #a67c0a;
+        }
+        .instruction {
+            background: #edf2f7;
+            border-left: 4px solid #b8860b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .code {
+            background: #2d3748;
+            color: #68d391;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            display: block;
+        }
+        .folder-structure {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+    </style>
 </head>
 <body>
-    <div class="calculator-container">
-        <div class="calculator">
-            
-            <div class="section">
-                <div class="section-header">
-                    <span class="section-number">1</span>
-                    <h2>ARE YOU INSTALLING THIS PROJECT YOURSELF, OR WOULD YOU LIKE US TO?</h2>
-                </div>
-                <div class="button-group">
-                    <button class="option-btn active" data-option="diy">DIY SELF<br>INSTALLATION</button>
-                    <button class="option-btn" data-option="trade">TRADE SELF<br>INSTALLATION</button>
-                    <button class="option-btn" data-option="ground">GROUND SCREW<br>CENTRE INSTALLATION</button>
-                </div>
-                
-                <div class="subsection-divider"></div>
-                
-                <div class="section-header">
-                    <span class="section-number">2</span>
-                    <h2>CHOOSE YOUR STRUCTURE TYPE</h2>
-                </div>
-                <select class="dropdown">
-                    <option value="">PLEASE SELECT</option>
-                    <option value="garden-room">Garden Room</option>
-                    <option value="gazebo">Gazebo</option>
-                    <option value="carport">Carport</option>
-                    <option value="shed">Shed</option>
-                </select>
-                
-                <div class="subsection-divider"></div>
-                
-                <div class="section-header">
-                    <span class="section-number">3</span>
-                    <h2>CHOOSE YOUR BASE TYPE</h2>
-                </div>
-                <div class="button-group">
-                    <button class="option-btn active" data-option="joist">JOIST</button>
-                    <button class="option-btn" data-option="sips">SIPS</button>
-                </div>
-                <div class="subsection">
-                    <h3>JOIST SIZE:</h3>
-                    <select class="dropdown">
-                        <option value="">PLEASE SELECT</option>
-                        <option value='5x2'>5" X 2"</option>
-                        <option value='6x2'>6" X 2"</option>
-                        <option value='7x2'>7" X 2"</option>
-                    </select>
-                </div>
-            </div>
+    <div class="container">
+        <div class="plugin-badge">WordPress Plugin v1.0.0</div>
+        <h1>🔧 Construction Calculator</h1>
+        <p>A professional WordPress plugin for calculating ground screw installations, complete with pricing, specifications, and shopping cart functionality.</p>
 
-            <div class="section">
-                <div class="section-header">
-                    <span class="section-number">4</span>
-                    <h2>WHAT ARE THE DIMENSIONS OF YOUR STRUCTURE?</h2>
-                </div>
-                <div class="dimension-group">
-                    <div class="dimension-row">
-                        <label class="dimension-label">
-                            <span class="icon">↔</span>
-                            <span>WIDTH</span>
-                        </label>
-                        <div class="dimension-inputs">
-                            <div class="input-group">
-                                <input type="number" value="3" min="0" class="dimension-input">
-                                <button class="spinner-btn up">▲</button>
-                                <button class="spinner-btn down">▼</button>
-                                <span class="unit">METRES</span>
-                            </div>
-                            <div class="input-group">
-                                <input type="number" value="9" min="0" class="dimension-input">
-                                <button class="spinner-btn up">▲</button>
-                                <button class="spinner-btn down">▼</button>
-                                <span class="unit">FEET</span>
-                            </div>
-                            <div class="input-group">
-                                <input type="number" value="10" min="0" class="dimension-input">
-                                <button class="spinner-btn up">▲</button>
-                                <button class="spinner-btn down">▼</button>
-                                <span class="unit">INCHES</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dimension-row">
-                        <label class="dimension-label">
-                            <span class="icon">↕</span>
-                            <span>LENGTH</span>
-                        </label>
-                        <div class="dimension-inputs">
-                            <div class="input-group">
-                                <input type="number" value="2" min="0" class="dimension-input">
-                                <button class="spinner-btn up">▲</button>
-                                <button class="spinner-btn down">▼</button>
-                                <span class="unit">METRES</span>
-                            </div>
-                            <div class="input-group">
-                                <input type="number" value="6" min="0" class="dimension-input">
-                                <button class="spinner-btn up">▲</button>
-                                <button class="spinner-btn down">▼</button>
-                                <span class="unit">FEET</span>
-                            </div>
-                            <div class="input-group">
-                                <input type="number" value="7" min="0" class="dimension-input">
-                                <button class="spinner-btn up">▲</button>
-                                <button class="spinner-btn down">▼</button>
-                                <span class="unit">INCHES</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="subsection-divider"></div>
-                
-                <div class="section-header">
-                    <span class="section-number">5</span>
-                    <h2>WILL THERE BE ANY ADDITIONAL LOADS?</h2>
-                </div>
-                <p class="description">E.g. Hot tubs, pool table, bi-fold doors and gym equipment etc.</p>
-                <select class="dropdown">
-                    <option value="">PLEASE SELECT</option>
-                    <option value="none">None</option>
-                    <option value="light">Light Load</option>
-                    <option value="medium">Medium Load</option>
-                    <option value="heavy">Heavy Load</option>
-                </select>
-                
-                <div class="subsection-divider"></div>
-                
-                <div class="section-header">
-                    <span class="section-number">6</span>
-                    <h2>CHOOSE GROUND SCREW SELECTION</h2>
-                </div>
-                <select class="dropdown">
-                    <option value="">PLEASE SELECT</option>
-                    <option value="standard">Standard Ground Screws</option>
-                    <option value="heavy-duty">Heavy Duty Ground Screws</option>
-                    <option value="premium">Premium Ground Screws</option>
-                </select>
-            </div>
-
-            <div class="section">
-                <div class="section-header">
-                    <span class="section-number">7</span>
-                    <h2>CHOOSE SECURING BRACKET SELECTION</h2>
-                </div>
-                <select class="dropdown">
-                    <option value="">PLEASE SELECT</option>
-                    <option value="standard">Standard Bracket System</option>
-                    <option value="premium">Premium Bracket System</option>
-                    <option value="heavy-duty">Heavy Duty Bracket System</option>
-                </select>
-                
-                <div class="subsection-divider"></div>
-                
-                <div class="section-header">
-                    <span class="section-number">8</span>
-                    <h2>INSTALLATION TOOL</h2>
-                </div>
-                <div class="tool-grid">
-                    <button class="tool-btn" data-tool="none">NO INSTALLATION TOOL REQUIRED</button>
-                    <button class="tool-btn active" data-tool="manual">PURCHASE - MANUAL INSTALLATION TOOL</button>
-                    <button class="tool-btn" data-tool="professional">PURCHASE - PROFESSIONAL RATCHET INSTALLATION TOOL</button>
-                    <button class="tool-btn" data-tool="hire">HIRE - PROFESSIONAL RATCHET INSTALLATION TOOL</button>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="section-header">
-                    <span class="section-number">9</span>
-                    <h2>ADDITIONAL ITEMS</h2>
-                </div>
-                <div class="checkbox-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" class="checkbox">
-                        <span>Impact ¼" Hex Nut Driver 8mm</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" class="checkbox">
-                        <span>85mm Magnetic Level</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" class="checkbox">
-                        <span>100 x Carbon steel TEK Screws</span>
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" class="checkbox">
-                        <span>SDS Plus 26mm x 950mm Pilot Drill Bit</span>
-                    </label>
-                </div>
-            </div>
-
-            <button class="calculate-btn" id="calculateBtn">CALCULATE</button>
-
-            <div class="results-section" id="resultsSection">
-                <h2 class="results-title">YOUR RESULTS</h2>
-                <div class="results-table">
-                    <div class="result-row">
-                        <div class="result-label">Structure Type</div>
-                        <div class="result-value">Garden Room</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Base Type</div>
-                        <div class="result-value">Joist</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Base Dimensions</div>
-                        <div class="result-value">3m X 2m (9.10ft X 6.7ft)</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Base Area</div>
-                        <div class="result-value">6m² (60.97ft²)</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Joist Size</div>
-                        <div class="result-value">5" X 2"</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Additional Loads</div>
-                        <div class="result-value">None</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Securing Brackets</div>
-                        <div class="result-value">Premium Bracket System</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Fitting Option</div>
-                        <div class="result-value">Buy Ground Screws, Brackets And Fixings For Self-Installation</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Ground Screw</div>
-                        <div class="result-value">68mm X 850mm Self Install Ground Screw</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Ground Screws for Base Area</div>
-                        <div class="result-value">9 (3 Rows Of 3 )</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Maximum Joist Span</div>
-                        <div class="result-value">1.5 M</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Recommended Install Range</div>
-                        <div class="result-value">Ground Level To 200mm Above Ground</div>
-                    </div>
-                    <div class="result-row">
-                        <div class="result-label">Maximum Load in Solid Ground</div>
-                        <div class="result-value">5,670kg (630 Kg Per Screw)</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cart-section" id="cartSection">
-                <h2 class="cart-title">ADD TO CART</h2>
-                <div class="cart-table">
-                    <div class="cart-header">
-                        <div class="cart-col-product">Product</div>
-                        <div class="cart-col-qty">Qty</div>
-                        <div class="cart-col-each">Each</div>
-                        <div class="cart-col-total">Total</div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-col-product product-name">68mm x 850mm Self Install Ground Screw</div>
-                        <div class="cart-col-qty">9</div>
-                        <div class="cart-col-each">£23.99</div>
-                        <div class="cart-col-total">£215.91</div>
-                    </div>
-                    <div class="cart-row">
-                        <div class="cart-col-product product-name">Premium Bracket System for 4" x 2", 5" x 2" & 6" x 2" Joists</div>
-                        <div class="cart-col-qty">9</div>
-                        <div class="cart-col-each">£9.49</div>
-                        <div class="cart-col-total">£85.41</div>
-                    </div>
-                    <div class="cart-subtotal">
-                        <div class="subtotal-label">Subtotal:</div>
-                        <div class="subtotal-value">£301.32 <span class="vat">+VAT</span></div>
-                    </div>
-                    <div class="cart-actions">
-                        <button class="cart-btn add-cart-btn">
-                            <span class="btn-icon">🛒</span> ADD TO CART
-                        </button>
-                        <button class="cart-btn email-btn">
-                            <span class="btn-icon">✉</span> EMAIL CALCULATION
-                        </button>
-                    </div>
-                </div>
-            </div>
-
+        <div class="features">
+            <h3 style="margin-top: 0; color: #2d3748;">✨ Features</h3>
+            <ul>
+                <li>Interactive 9-section calculator</li>
+                <li>Installation type selection (DIY, Trade, Professional)</li>
+                <li>Dimension inputs with multiple unit support</li>
+                <li>Ground screw and bracket selection</li>
+                <li>Real-time calculation results</li>
+                <li>Shopping cart with pricing</li>
+                <li>Fully responsive design</li>
+                <li>Easy shortcode integration</li>
+            </ul>
         </div>
+
+        <h2>📦 Installation</h2>
+        <p>The plugin is ready to install on your WordPress site. Follow these steps:</p>
+        
+        <div class="instruction">
+            <strong>Step 1:</strong> Download the <code>construction-calculator</code> folder from this project
+        </div>
+        
+        <div class="instruction">
+            <strong>Step 2:</strong> Upload to your WordPress site at <code>wp-content/plugins/</code>
+        </div>
+        
+        <div class="instruction">
+            <strong>Step 3:</strong> Activate the plugin in WordPress Admin → Plugins
+        </div>
+
+        <h2>🚀 Usage</h2>
+        <p>Add the calculator to any page or post using the shortcode:</p>
+        <code class="code">[construction_calculator]</code>
+
+        <h2>📁 Plugin Structure</h2>
+        <div class="folder-structure">construction-calculator/
+├── construction-calculator.php    <span style="color: #68d391;">← Main plugin file</span>
+├── README.md                       <span style="color: #68d391;">← Documentation</span>
+├── assets/
+│   ├── style.css                  <span style="color: #68d391;">← Styling</span>
+│   └── script.js                  <span style="color: #68d391;">← Functionality</span>
+└── templates/
+    └── calculator-template.php    <span style="color: #68d391;">← HTML template</span></div>
+
+        <h2>📋 Requirements</h2>
+        <p>
+            <strong>WordPress:</strong> 5.0+<br>
+            <strong>PHP:</strong> 7.0+<br>
+            <strong>jQuery:</strong> Included with WordPress
+        </p>
+
+        <p style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e2e8f0; color: #a0aec0; font-size: 14px;">
+            For detailed documentation, see <strong>construction-calculator/README.md</strong>
+        </p>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>

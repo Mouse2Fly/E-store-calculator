@@ -1,59 +1,129 @@
-# Construction Calculator
+# Construction Calculator WordPress Plugin
 
 ## Overview
-An interactive construction calculator webpage built with HTML, CSS, JavaScript, and jQuery. The calculator helps users select construction options and displays pricing results.
+A professional WordPress plugin that provides an interactive construction calculator for ground screw installations. The calculator helps users calculate requirements, pricing, and installation details directly on any WordPress site using a simple shortcode.
+
+## Project Type
+WordPress Plugin (PHP, JavaScript, CSS)
+
+## Current Status
+Fully functional WordPress plugin ready for installation on any WordPress site (v5.0+).
 
 ## Project Structure
-- `index.html` - Main HTML structure with 9 numbered sections plus results and cart
-- `style.css` - Styling with white page background, light gray calculator container, dark sections with golden accents
-- `script.js` - jQuery-based interactions for button toggles, spinners, and result display
+```
+construction-calculator/          # Main plugin folder
+├── construction-calculator.php   # Main plugin file with shortcode registration
+├── README.md                     # Complete installation and usage documentation
+├── assets/                       # CSS and JavaScript assets
+│   ├── style.css                # Calculator styling
+│   └── script.js                # jQuery-based interactions
+└── templates/                    # PHP template files
+    └── calculator-template.php  # Calculator HTML output
 
-## Design Features
-- Page background: White (#ffffff)
-- Calculator container: Light gray (#f5f5f5) at 66.66% width (2/3 of screen)
-- Sections: Light gray background (#f5f5f5) matching outer container
-- Interactive elements: Dark buttons/dropdowns (#2d2d2d, #4a4a4a) with golden accent color (#b8860b)
-- Responsive design with mobile breakpoints
+index.html                        # Plugin information page (for Replit display)
+replit.md                        # This file
+attached_assets/                 # Design reference images
+```
 
-## Calculator Sections
-### Part 1 (Sections 1-3)
-- Installation type selection
-- Structure type dropdown
-- Base type selection with joist size
+## Installation on WordPress
 
-### Part 2 (Sections 4-6)
-- Dimension inputs with unit toggles (metres/feet/inches)
-- Additional loads selection
-- Ground screw selection
+### Quick Start
+1. Download the `construction-calculator` folder
+2. Upload to WordPress at `wp-content/plugins/`
+3. Activate in WordPress Admin → Plugins
+4. Use shortcode `[construction_calculator]` on any page/post
 
-### Part 3 (Sections 7-8)
-- Securing bracket selection
-- Installation tool options (4 buttons)
+### Detailed Instructions
+See `construction-calculator/README.md` for complete installation guide.
 
-### Part 4 (Section 9 + Calculate)
-- Additional items checkboxes
-- Calculate button
+## Features
 
-### Part 5 (Results Section)
-- Hidden by default
-- Displays when Calculate is clicked
-- Shows structure details, dimensions, and specifications
+### Calculator Sections
+1. **Installation Type** - DIY, Trade, or Ground Screw Centre installation
+2. **Structure Type** - Garden Room, Gazebo, Carport, or Shed
+3. **Base Type** - Joist or SIPS with size selection
+4. **Dimensions** - Width and length input with meters/feet/inches
+5. **Additional Loads** - Hot tubs, pool tables, gym equipment, etc.
+6. **Ground Screw Selection** - Standard, Heavy Duty, or Premium
+7. **Securing Brackets** - Standard, Premium, or Heavy Duty systems
+8. **Installation Tools** - Manual, Professional, or Hire options
+9. **Additional Items** - Accessories and supplementary products
 
-### Part 6 (Cart Section)
-- Hidden by default
-- Displays when Calculate is clicked
-- Shows product listing with pricing and action buttons
+### Output Displays
+- **Results Section** - Shows calculated specifications, dimensions, and load capacities
+- **Cart Section** - Displays product pricing and cart actions
 
-## Interactions
-- Button selections toggle active state (golden highlight)
-- Number spinners increment/decrement values
-- Calculate button reveals results and cart sections with smooth animation
+## Technical Details
+
+### Plugin Architecture
+- **Main File**: `construction-calculator.php` registers the shortcode and enqueues assets
+- **Shortcode**: `[construction_calculator]` outputs the calculator on any page
+- **Template System**: Uses PHP templates for clean separation of concerns
+- **Asset Loading**: Conditional loading only when shortcode is present on page
+
+### Styling
+- Color scheme: Golden accent (#b8860b) with dark elements (#2d2d2d, #4a4a4a)
+- Responsive design with mobile breakpoints at 968px
+- Clean, professional interface matching original design
+- Light gray backgrounds (#f5f5f5) with proper contrast
+
+### JavaScript Functionality
+- jQuery-based interactions (WordPress includes jQuery by default)
+- Button toggle states for option selection
+- Number spinner controls for dimension inputs
+- Smooth animations for results display
 - Auto-scroll to results after calculation
 
+## Requirements
+- **WordPress**: 5.0 or higher
+- **PHP**: 7.0 or higher
+- **jQuery**: Included with WordPress (no additional setup needed)
+
+## Usage Examples
+
+### Basic Usage
+```php
+// In any WordPress page or post, add:
+[construction_calculator]
+```
+
+### In PHP Template
+```php
+<?php echo do_shortcode('[construction_calculator]'); ?>
+```
+
+### In Widget (Classic Widgets)
+Add the shortcode `[construction_calculator]` to a Text widget
+
+## Development Notes
+
+### Converting from Standalone HTML
+This plugin was converted from a standalone HTML/CSS/JavaScript calculator to a WordPress plugin format:
+- Standalone files removed: `index.html`, `style.css`, `script.js`
+- Assets moved to plugin structure in `assets/` directory
+- HTML converted to PHP template in `templates/` directory
+- WordPress plugin architecture implemented with proper hooks
+
+### Plugin Hooks Used
+- `wp_enqueue_scripts` - For conditional asset loading
+- `add_shortcode` - For registering the calculator shortcode
+
+## Browser Compatibility
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Responsive design for mobile and tablet devices
+- IE11+ (due to CSS Grid usage)
+
 ## Recent Changes
-- 2025-10-27: Initial creation of calculator with all 6 parts matching design screenshots
-- Implemented jQuery for interactive elements
-- Added subsection dividers to visually separate grouped sections
-- Updated section backgrounds to light gray (#f5f5f5) to match outer container
-- Adjusted text colors to dark (#2d2d2d) for proper contrast on light background
-- Added 1px separating lines between major sections for clear visual organization
+- **2025-10-27**: Converted standalone calculator to WordPress plugin
+  - Created plugin architecture with proper WordPress structure
+  - Implemented shortcode functionality
+  - Moved assets to plugin directories
+  - Created comprehensive documentation
+  - Removed standalone HTML files
+  - Updated server to display plugin information page
+
+## Support & Documentation
+For complete documentation, see `construction-calculator/README.md`
+
+## License
+GPL v2 or later (compatible with WordPress)

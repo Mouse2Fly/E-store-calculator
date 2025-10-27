@@ -1,4 +1,4 @@
-modules = ["web", "nodejs-20"]
+modules = ["web", "nodejs-20", "python-3.11"]
 [agent]
 expertMode = true
 
@@ -12,10 +12,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Server"
+args = "Info Server"
 
 [[workflows.workflow]]
-name = "Server"
+name = "Info Server"
 author = "agent"
 
 [[workflows.workflow.tasks]]
@@ -29,10 +29,6 @@ outputType = "webview"
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[[ports]]
-localPort = 35225
-externalPort = 3001
 
 [[ports]]
 localPort = 46865
