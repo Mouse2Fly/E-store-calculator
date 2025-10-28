@@ -275,7 +275,7 @@
 
 .construction-calculator-plugin .results-section,
 .construction-calculator-plugin .cart-section {
-    background-color: #2d2d2d;
+    background-color: #f5f5f5;
     padding: 40px;
     margin-bottom: 20px;
     border-radius: 2px;
@@ -289,7 +289,7 @@
 
 .construction-calculator-plugin .results-title,
 .construction-calculator-plugin .cart-title {
-    color: #ffffff;
+    color: #2d2d2d;
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 30px;
@@ -297,13 +297,13 @@
 }
 
 .construction-calculator-plugin .results-table {
-    border: 1px solid #4a4a4a;
+    border: 1px solid #2d2d2d;
 }
 
 .construction-calculator-plugin .result-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid #4a4a4a;
+    border-bottom: 1px solid #2d2d2d;
 }
 
 .construction-calculator-plugin .result-row:last-child {
@@ -311,20 +311,20 @@
 }
 
 .construction-calculator-plugin .result-label {
-    color: #ffffff;
+    color: #2d2d2d;
     font-weight: bold;
     padding: 20px;
-    border-right: 1px solid #4a4a4a;
-    background-color: rgba(0, 0, 0, 0.2);
+    border-right: 1px solid #2d2d2d;
+    background-color: #e8e8e8;
 }
 
 .construction-calculator-plugin .result-value {
-    color: #ffffff;
+    color: #2d2d2d;
     padding: 20px;
 }
 
 .construction-calculator-plugin .cart-table {
-    border: 1px solid #4a4a4a;
+    border: 1px solid #2d2d2d;
     padding: 30px;
 }
 
@@ -333,12 +333,12 @@
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 20px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #4a4a4a;
+    border-bottom: 1px solid #2d2d2d;
     margin-bottom: 15px;
 }
 
 .construction-calculator-plugin .cart-header > div {
-    color: #ffffff;
+    color: #2d2d2d;
     font-weight: bold;
     font-size: 16px;
 }
@@ -355,11 +355,11 @@
 .construction-calculator-plugin .cart-col-qty,
 .construction-calculator-plugin .cart-col-each,
 .construction-calculator-plugin .cart-col-total {
-    color: #ffffff;
+    color: #2d2d2d;
 }
 
 .construction-calculator-plugin .product-name {
-    color: #90ee90;
+    color: #2d2d2d;
     font-size: 14px;
 }
 
@@ -376,23 +376,23 @@
     gap: 20px;
     padding: 20px 0;
     margin-top: 20px;
-    border-top: 1px solid #4a4a4a;
+    border-top: 1px solid #2d2d2d;
 }
 
 .construction-calculator-plugin .subtotal-label {
-    color: #ffffff;
+    color: #2d2d2d;
     font-weight: bold;
     font-size: 18px;
 }
 
 .construction-calculator-plugin .subtotal-value {
-    color: #ffffff;
+    color: #2d2d2d;
     font-size: 18px;
 }
 
 .construction-calculator-plugin .vat {
     font-size: 14px;
-    color: #cccccc;
+    color: #666666;
 }
 
 .construction-calculator-plugin .cart-actions {
