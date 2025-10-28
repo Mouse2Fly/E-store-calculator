@@ -113,14 +113,29 @@ This plugin was converted from a standalone HTML/CSS/JavaScript calculator to a 
 - Responsive design for mobile and tablet devices
 - IE11+ (due to CSS Grid usage)
 
+## Replit Environment Setup
+
+This project runs in Replit as a static website serving demonstration pages.
+
+### Running Locally in Replit
+- **Server**: Python 3.11 HTTP server on port 5000
+- **Pages Available**:
+  - `/` or `/index.html` - Plugin information and documentation
+  - `/demo.html` - Live interactive demo of the calculator
+- **Auto-reload**: Server includes cache-control headers for instant updates
+
+### Files for Replit
+- `server.py` - Simple Python HTTP server serving static files
+- `demo.html` - Standalone demo of the calculator functionality
+- `index.html` - Plugin documentation page
+
 ## Recent Changes
-- **2025-10-27**: Converted standalone calculator to WordPress plugin
-  - Created plugin architecture with proper WordPress structure
-  - Implemented shortcode functionality
-  - Moved assets to plugin directories
-  - Created comprehensive documentation
-  - Removed standalone HTML files
-  - Updated server to display plugin information page
+- **2025-10-28**: Initial Replit environment setup
+  - Configured Python 3.11 HTTP server on port 5000
+  - Set up workflow for automatic server startup
+  - Added cache-control headers for proper file serving
+  - Updated .gitignore for Python files
+  - Project ready to view in Replit webview
 
 ## Support & Documentation
 For complete documentation, see `construction-calculator/README.md`
