@@ -11,13 +11,13 @@ $(document).ready(function() {
     });
 
     $('.spinner-btn.up').click(function() {
-        var input = $(this).siblings('.dimension-input');
+        var input = $(this).closest('.input-box').find('.dimension-input');
         var currentValue = parseInt(input.val()) || 0;
         input.val(currentValue + 1);
     });
 
     $('.spinner-btn.down').click(function() {
-        var input = $(this).siblings('.dimension-input');
+        var input = $(this).closest('.input-box').find('.dimension-input');
         var currentValue = parseInt(input.val()) || 0;
         if (currentValue > 0) {
             input.val(currentValue - 1);
