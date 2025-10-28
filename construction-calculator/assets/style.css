@@ -152,15 +152,16 @@
 
 .construction-calculator-plugin .dimension-inputs {
     display: flex;
-    gap: 15px;
+    gap: 25px;
     flex: 1;
 }
 
 .construction-calculator-plugin .input-group {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     background-color: #4a4a4a;
-    padding: 10px;
+    padding: 15px 10px;
     flex: 1;
 }
 
@@ -171,8 +172,9 @@
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    padding: 5px;
+    padding: 8px 5px;
     width: 100%;
+    line-height: 1.2;
 }
 
 .construction-calculator-plugin .dimension-input:focus {
@@ -197,7 +199,8 @@
     font-size: 12px;
     font-weight: bold;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 8px;
+    line-height: 1.2;
 }
 
 .construction-calculator-plugin .description {
