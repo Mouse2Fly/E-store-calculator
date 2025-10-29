@@ -292,9 +292,9 @@
 
 .construction-calculator-plugin .calculate-btn {
     width: 100%;
-    background-color: transparent;
-    color: #3a3530;
-    border: 2px solid #4a4a4a;
+    background-color: #ca5e2a;
+    color: #ffffff;
+    border: 2px solid #ca5e2a;
     padding: 20px;
     font-size: 16px;
     font-weight: bold;
@@ -305,8 +305,8 @@
 }
 
 .construction-calculator-plugin .calculate-btn:hover {
-    background-color: rgba(74, 74, 74, 0.1);
-    border-color: #3a3530;
+    background-color: #b54f21;
+    border-color: #b54f21;
 }
 
 .construction-calculator-plugin .results-section,
@@ -438,9 +438,9 @@
 }
 
 .construction-calculator-plugin .cart-btn {
-    background-color: transparent;
-    color: #3a3530;
-    border: 2px solid #4a4a4a;
+    background-color: #ca5e2a;
+    color: #ffffff;
+    border: 2px solid #ca5e2a;
     padding: 15px 30px;
     font-size: 14px;
     font-weight: bold;
@@ -452,17 +452,17 @@
 }
 
 .construction-calculator-plugin .cart-btn:hover {
-    background-color: rgba(74, 74, 74, 0.1);
-    border-color: #3a3530;
+    background-color: #b54f21;
+    border-color: #b54f21;
 }
 
 .construction-calculator-plugin .email-btn {
-    background-color: transparent;
+    background-color: #ca5e2a;
 }
 
 .construction-calculator-plugin .email-btn:hover {
-    background-color: rgba(74, 74, 74, 0.1);
-    border-color: #3a3530;
+    background-color: #b54f21;
+    border-color: #b54f21;
 }
 
 .construction-calculator-plugin .btn-icon {
