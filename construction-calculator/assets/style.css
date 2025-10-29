@@ -75,37 +75,39 @@
 }
 
 .construction-calculator-plugin .option-btn {
-    background-color: #3a3530;
-    color: #ffffff;
-    border: none;
+    background-color: transparent;
+    color: #3a3530;
+    border: 2px solid #4a4a4a;
     padding: 30px 20px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
     text-align: center;
     line-height: 1.5;
 }
 
 .construction-calculator-plugin .option-btn:hover {
-    background-color: #4a4540;
+    background-color: rgba(74, 74, 74, 0.1);
+    border-color: #3a3530;
 }
 
 .construction-calculator-plugin .option-btn.active {
-    background-color: #ca5e2a;
-    color: #3a3530;
+    background-color: rgba(202, 94, 42, 0.1);
+    border-color: #ca5e2a;
+    color: #ca5e2a;
 }
 
 .construction-calculator-plugin .dropdown {
     width: 100%;
-    background-color: #3a3530;
-    color: #ffffff;
-    border: 1px solid #3a3530;
+    background-color: transparent;
+    color: #3a3530;
+    border: 2px solid #4a4a4a;
     padding: 15px;
     font-size: 14px;
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233a3530' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 15px center;
     padding-right: 40px;
@@ -244,25 +246,27 @@
 }
 
 .construction-calculator-plugin .tool-btn {
-    background-color: #3a3530;
-    color: #ffffff;
-    border: none;
+    background-color: transparent;
+    color: #3a3530;
+    border: 2px solid #4a4a4a;
     padding: 30px 20px;
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
     text-align: center;
     line-height: 1.5;
 }
 
 .construction-calculator-plugin .tool-btn:hover {
-    background-color: #4a4540;
+    background-color: rgba(74, 74, 74, 0.1);
+    border-color: #3a3530;
 }
 
 .construction-calculator-plugin .tool-btn.active {
-    background-color: #ca5e2a;
-    color: #3a3530;
+    background-color: rgba(202, 94, 42, 0.1);
+    border-color: #ca5e2a;
+    color: #ca5e2a;
 }
 
 .construction-calculator-plugin .checkbox-group {
@@ -288,20 +292,21 @@
 
 .construction-calculator-plugin .calculate-btn {
     width: 100%;
-    background-color: #ca5e2a;
-    color: #ffffff;
-    border: none;
+    background-color: transparent;
+    color: #3a3530;
+    border: 2px solid #4a4a4a;
     padding: 20px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     letter-spacing: 1px;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
     margin-bottom: 20px;
 }
 
 .construction-calculator-plugin .calculate-btn:hover {
-    background-color: #b54f21;
+    background-color: rgba(74, 74, 74, 0.1);
+    border-color: #3a3530;
 }
 
 .construction-calculator-plugin .results-section,
@@ -433,29 +438,31 @@
 }
 
 .construction-calculator-plugin .cart-btn {
-    background-color: #ca5e2a;
-    color: #ffffff;
-    border: none;
+    background-color: transparent;
+    color: #3a3530;
+    border: 2px solid #4a4a4a;
     padding: 15px 30px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 .construction-calculator-plugin .cart-btn:hover {
-    background-color: #b54f21;
+    background-color: rgba(74, 74, 74, 0.1);
+    border-color: #3a3530;
 }
 
 .construction-calculator-plugin .email-btn {
-    background-color: #ca5e2a;
+    background-color: transparent;
 }
 
 .construction-calculator-plugin .email-btn:hover {
-    background-color: #b54f21;
+    background-color: rgba(74, 74, 74, 0.1);
+    border-color: #3a3530;
 }
 
 .construction-calculator-plugin .btn-icon {
