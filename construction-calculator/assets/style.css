@@ -93,9 +93,9 @@
 }
 
 .construction-calculator-plugin .option-btn.active {
-    background-color: rgba(202, 94, 42, 0.1);
+    background-color: #ca5e2a;
     border-color: #ca5e2a;
-    color: #ca5e2a;
+    color: #ffffff;
 }
 
 .construction-calculator-plugin .dropdown {
@@ -264,9 +264,9 @@
 }
 
 .construction-calculator-plugin .tool-btn.active {
-    background-color: rgba(202, 94, 42, 0.1);
+    background-color: #ca5e2a;
     border-color: #ca5e2a;
-    color: #ca5e2a;
+    color: #ffffff;
 }
 
 .construction-calculator-plugin .checkbox-group {
