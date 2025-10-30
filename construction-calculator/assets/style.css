@@ -21,7 +21,6 @@
     width: 66.66%;
     background-color: #ffffff;
     padding: 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border-radius: 16px;
 }
 
@@ -335,7 +334,6 @@
     margin-bottom: 20px;
     border-radius: 16px;
     display: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .construction-calculator-plugin .results-section.show,
