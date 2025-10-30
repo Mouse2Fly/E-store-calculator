@@ -352,7 +352,7 @@
 
 .construction-calculator-plugin .results-table {
     border: 1px solid #e0e0e0;
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
 }
 
@@ -368,15 +368,16 @@
 
 .construction-calculator-plugin .result-label {
     color: #2d2d2d;
-    font-weight: 600;
-    padding: 20px;
+    font-weight: 400;
+    padding: 15px 20px;
     border-right: 1px solid #e0e0e0;
-    background-color: #f8f8f8;
+    background-color: #ffffff;
 }
 
 .construction-calculator-plugin .result-value {
     color: #2d2d2d;
-    padding: 20px;
+    padding: 15px 20px;
+    font-weight: 400;
 }
 
 .construction-calculator-plugin .cart-table {
