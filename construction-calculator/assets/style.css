@@ -351,7 +351,7 @@
 }
 
 .construction-calculator-plugin .results-table {
-    border: 1px solid #2d5650;
+    border: 1px solid #8bc9b3;
     border-radius: 0;
     overflow: hidden;
 }
@@ -359,7 +359,7 @@
 .construction-calculator-plugin .result-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid #2d5650;
+    border-bottom: 1px solid #8bc9b3;
 }
 
 .construction-calculator-plugin .result-row:last-child {
@@ -375,7 +375,7 @@
     color: #2d2d2d;
     font-weight: 400;
     padding: 15px 20px;
-    border-right: 1px solid #2d5650;
+    border-right: 1px solid #8bc9b3;
     background-color: #ffffff;
 }
 
