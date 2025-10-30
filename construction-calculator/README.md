@@ -1,20 +1,3 @@
-# Construction Calculator WordPress Plugin
-
-An interactive construction calculator for ground screw installations. This plugin allows users to calculate ground screw requirements, pricing, and installation details directly on your WordPress site.
-
-## Features
-
-- Interactive calculator with 9 sections for complete project planning
-- Installation type selection (DIY, Trade, Ground Screw Centre)
-- Structure type selection (Garden Room, Gazebo, Carport, Shed)
-- Dimension calculator with meters, feet, and inches
-- Additional load calculations
-- Ground screw and bracket selection
-- Installation tool options
-- Results display with detailed specifications
-- Shopping cart with pricing
-- Responsive design for mobile and desktop
-
 ## Installation
 
 ### Method 1: Upload via WordPress Admin
@@ -89,19 +72,3 @@ construction-calculator/
 └── templates/
     └── calculator-template.php    # Calculator HTML template
 ```
-
-## Support
-
-For issues or questions, please contact your developer or visit the plugin documentation.
-
-## License
-
-GPL v2 or later
-
-## Changelog
-
-### Version 1.0.0
-- Initial release
-- Full calculator functionality
-- Shortcode support
-- Responsive design
