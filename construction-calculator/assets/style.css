@@ -74,6 +74,10 @@
     gap: 15px;
 }
 
+.construction-calculator-plugin .button-group-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .construction-calculator-plugin .option-btn {
     background-color: #f8f8f8;
     color: #2d2d2d;
