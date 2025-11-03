@@ -104,12 +104,18 @@ $(document).ready(function() {
         var $plotisContainer = $('#section6PlotisContainer');
         var $plotisSelect = $('#section6PlotisSelect');
         
-        if (!height) {
+        if (!height || !section5Type) {
             $plotisContainer.hide();
             return;
         }
         
-        var options = section6PlotisOptions[section5Type][height];
+        var typeOptions = section6PlotisOptions[section5Type];
+        if (!typeOptions) {
+            $plotisContainer.hide();
+            return;
+        }
+        
+        var options = typeOptions[height];
         if (!options) {
             $plotisContainer.hide();
             return;
@@ -136,8 +142,8 @@ $(document).ready(function() {
         $plotisContainer.show();
     }
 
-    // Section 5 button click handler for section 6
-    $('#section6AukstisSelect').closest('.section').prev().find('.option-btn').click(function() {
+    // Section 5 button click handler for section 6 (within same parent section)
+    $('[data-option="m-tipo"], [data-option="sraigtiniai"]').click(function() {
         var selectedType = $(this).data('option');
         var $select = $('#section6AukstisSelect');
         
@@ -162,7 +168,8 @@ $(document).ready(function() {
     // Section 6 Aukstis change handler
     $('#section6AukstisSelect').change(function() {
         var selectedHeight = $(this).val();
-        var section5Type = $('#section6AukstisSelect').closest('.section').prev().find('.option-btn.active').data('option');
+        // Find section 5 active button within the same parent section
+        var section5Type = $(this).closest('.section').find('[data-option="m-tipo"], [data-option="sraigtiniai"]').filter('.active').data('option');
         updateSection6PlotisSelect(section5Type, selectedHeight);
     });
 
