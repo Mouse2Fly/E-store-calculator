@@ -31,7 +31,7 @@
             </div>
             <div class="pole-length-label">AUKŠTIS</div>
             <select class="dropdown" id="poleLengthSelect">
-                <option value="">PLEASE SELECT</option>
+                <option value=""></option>
                 <option value="685mm" data-type="u-tipo">685mm</option>
                 <option value="885mm" data-type="u-tipo">885mm</option>
                 <option value="1000mm" data-type="u-tipo">1000mm</option>
@@ -46,7 +46,7 @@
             <div id="plotisContainer" style="display:none;">
                 <div class="pole-length-label">PLOTIS</div>
                 <select class="dropdown" id="plotisSelect">
-                    <option value="">PLEASE SELECT</option>
+                    <option value=""></option>
                 </select>
             </div>
         </div>
@@ -154,7 +154,7 @@
             </div>
             <div class="pole-length-label">AUKŠTIS</div>
             <select class="dropdown" id="section6AukstisSelect">
-                <option value="">PLEASE SELECT</option>
+                <option value=""></option>
                 <option value="1000mm" data-type="m-tipo">1000mm</option>
                 <option value="1200mm" data-type="m-tipo">1200mm</option>
                 <option value="500mm" data-type="sraigtiniai" style="display:none;">500mm</option>
@@ -164,7 +164,7 @@
             <div id="section6PlotisContainer" style="display:none;">
                 <div class="pole-length-label">PLOTIS</div>
                 <select class="dropdown" id="section6PlotisSelect">
-                    <option value="">PLEASE SELECT</option>
+                    <option value=""></option>
                 </select>
             </div>
         </div>
@@ -175,7 +175,7 @@
                 <h2>CHOOSE SECURING BRACKET SELECTION</h2>
             </div>
             <select class="dropdown">
-                <option value="">PLEASE SELECT</option>
+                <option value=""></option>
                 <option value="standard">Standard Bracket System</option>
                 <option value="premium">Premium Bracket System</option>
                 <option value="heavy-duty">Heavy Duty Bracket System</option>
