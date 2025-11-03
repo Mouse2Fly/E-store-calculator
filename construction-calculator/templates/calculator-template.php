@@ -161,6 +161,12 @@
                 <option value="1000mm-s" data-type="sraigtiniai" style="display:none;">1000mm</option>
                 <option value="1200mm-s" data-type="sraigtiniai" style="display:none;">1200mm</option>
             </select>
+            <div id="section6PlotisContainer" style="display:none;">
+                <div class="pole-length-label">PLOTIS</div>
+                <select class="dropdown" id="section6PlotisSelect">
+                    <option value="">PLEASE SELECT</option>
+                </select>
+            </div>
         </div>
 
         <div class="section">
