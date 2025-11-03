@@ -103,6 +103,14 @@
     color: #ffffff;
 }
 
+.construction-calculator-plugin .pole-length-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3a3530;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
 .construction-calculator-plugin .dropdown {
     width: 100%;
     background-color: #f8f8f8;
