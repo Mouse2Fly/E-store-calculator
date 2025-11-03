@@ -138,8 +138,7 @@
     cursor: not-allowed;
 }
 
-.construction-calculator-plugin #plotisContainer,
-.construction-calculator-plugin #section6PlotisContainer {
+.construction-calculator-plugin #plotisContainer {
     margin-top: 20px;
 }
 

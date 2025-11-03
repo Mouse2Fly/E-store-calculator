@@ -87,55 +87,6 @@ $(document).ready(function() {
         updatePlotisSelect(selectedType, selectedHeight);
     });
 
-    // Section 6 Plotis options mapping
-    var section6PlotisOptions = {
-        'm-tipo': {
-            '1000mm': ['68mm'],
-            '1200mm': ['76mm', '89mm']
-        },
-        'sraigtiniai': {
-            '500mm': ['76mm', '89mm'],
-            '1000mm-s': ['68mm', '76mm', '89mm'],
-            '1200mm-s': ['76mm', '89mm']
-        }
-    };
-
-    function updateSection6PlotisSelect(section5Type, height) {
-        var $plotisContainer = $('#section6PlotisContainer');
-        var $plotisSelect = $('#section6PlotisSelect');
-        
-        if (!height) {
-            $plotisContainer.hide();
-            return;
-        }
-        
-        var options = section6PlotisOptions[section5Type][height];
-        if (!options) {
-            $plotisContainer.hide();
-            return;
-        }
-        
-        // Clear existing options
-        $plotisSelect.empty();
-        
-        // If only one option, auto-select and disable
-        if (options.length === 1) {
-            $plotisSelect.append('<option value="' + options[0] + '" selected>' + options[0] + '</option>');
-            $plotisSelect.prop('disabled', true);
-            $plotisSelect.addClass('disabled');
-        } else {
-            // Multiple options
-            $plotisSelect.append('<option value="">PLEASE SELECT</option>');
-            options.forEach(function(option) {
-                $plotisSelect.append('<option value="' + option + '">' + option + '</option>');
-            });
-            $plotisSelect.prop('disabled', false);
-            $plotisSelect.removeClass('disabled');
-        }
-        
-        $plotisContainer.show();
-    }
-
     // Section 5 button click handler for section 6
     $('#section6AukstisSelect').closest('.section').prev().find('.option-btn').click(function() {
         var selectedType = $(this).data('option');
@@ -154,15 +105,6 @@ $(document).ready(function() {
                 $(this).hide();
             }
         });
-        
-        // Hide plotis when section 5 type changes
-        $('#section6PlotisContainer').hide();
-    });
-
-    $('#section6AukstisSelect').change(function() {
-        var selectedHeight = $(this).val();
-        var section5Type = $('#section6AukstisSelect').closest('.section').prev().find('.option-btn.active').data('option');
-        updateSection6PlotisSelect(section5Type, selectedHeight);
     });
 
     $('.tool-btn').click(function() {
