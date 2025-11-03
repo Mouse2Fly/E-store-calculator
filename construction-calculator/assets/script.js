@@ -5,6 +5,25 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
+    $('.pole-type-btn').click(function() {
+        var selectedType = $(this).data('option');
+        var $select = $('#poleLengthSelect');
+        
+        // Reset select
+        $select.val('');
+        
+        // Hide all options except the placeholder
+        $select.find('option').each(function() {
+            if ($(this).val() === '') {
+                $(this).show();
+            } else if ($(this).data('type') === selectedType) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
     $('.tool-btn').click(function() {
         $(this).siblings('.tool-btn').removeClass('active');
         $(this).addClass('active');

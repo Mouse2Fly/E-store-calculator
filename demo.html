@@ -69,9 +69,22 @@
                 <h2>PASIRINKITE JŪSŲ POLIŲ TIPĄ</h2>
             </div>
             <div class="button-group button-group-2">
-                <button class="option-btn active" data-option="u-tipo">U Tipo</button>
-                <button class="option-btn" data-option="m-tipo">M Tipo</button>
+                <button class="option-btn pole-type-btn active" data-option="u-tipo">U Tipo</button>
+                <button class="option-btn pole-type-btn" data-option="m-tipo">M Tipo</button>
             </div>
+            <select class="dropdown" id="poleLengthSelect">
+                <option value="">PLEASE SELECT</option>
+                <option value="685mm" data-type="u-tipo">685mm</option>
+                <option value="885mm" data-type="u-tipo">885mm</option>
+                <option value="1000mm" data-type="u-tipo">1000mm</option>
+                <option value="1085mm" data-type="u-tipo">1085mm</option>
+                <option value="1300mm" data-type="u-tipo">1300mm</option>
+                <option value="750mm" data-type="m-tipo" style="display:none;">750mm</option>
+                <option value="1000mm-m" data-type="m-tipo" style="display:none;">1000mm</option>
+                <option value="1200mm" data-type="m-tipo" style="display:none;">1200mm</option>
+                <option value="1400mm" data-type="m-tipo" style="display:none;">1400mm</option>
+                <option value="2050mm" data-type="m-tipo" style="display:none;">2050mm</option>
+            </select>
             
             <div class="subsection-divider"></div>
             
