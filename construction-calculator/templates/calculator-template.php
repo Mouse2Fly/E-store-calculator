@@ -18,11 +18,10 @@
                 <span class="section-number">2</span>
                 <h2>PASIRINKITE JŪSŲ POLIŲ TIPĄ</h2>
             </div>
-            <select class="dropdown">
-                <option value="">PLEASE SELECT</option>
-                <option value="u-tipo">U Tipo</option>
-                <option value="m-tipo">M Tipo</option>
-            </select>
+            <div class="button-group button-group-2">
+                <button class="option-btn active" data-option="u-tipo">U Tipo</button>
+                <button class="option-btn" data-option="m-tipo">M Tipo</button>
+            </div>
             
             <div class="subsection-divider"></div>
             
