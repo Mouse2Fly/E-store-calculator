@@ -152,12 +152,21 @@
                 <span class="section-number">6</span>
                 <h2>CHOOSE GROUND SCREW SELECTION</h2>
             </div>
-            <select class="dropdown">
+            <div class="pole-length-label">AUKŠTIS</div>
+            <select class="dropdown" id="section6AukstisSelect">
                 <option value="">PLEASE SELECT</option>
-                <option value="standard">Standard Ground Screws</option>
-                <option value="heavy-duty">Heavy Duty Ground Screws</option>
-                <option value="premium">Premium Ground Screws</option>
+                <option value="1000mm" data-type="m-tipo">1000mm</option>
+                <option value="1200mm" data-type="m-tipo">1200mm</option>
+                <option value="500mm" data-type="sraigtiniai" style="display:none;">500mm</option>
+                <option value="1000mm-s" data-type="sraigtiniai" style="display:none;">1000mm</option>
+                <option value="1200mm-s" data-type="sraigtiniai" style="display:none;">1200mm</option>
             </select>
+            <div id="section6PlotisContainer" style="display:none;">
+                <div class="pole-length-label">PLOTIS</div>
+                <select class="dropdown" id="section6PlotisSelect">
+                    <option value="">PLEASE SELECT</option>
+                </select>
+            </div>
         </div>
 
         <div class="section">
