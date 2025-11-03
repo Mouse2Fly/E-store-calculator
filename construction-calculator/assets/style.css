@@ -135,10 +135,7 @@
 
 .construction-calculator-plugin .dropdown.disabled,
 .construction-calculator-plugin .dropdown:disabled {
-    background-color: #e8e8e8;
-    color: #888;
     cursor: not-allowed;
-    opacity: 0.7;
 }
 
 .construction-calculator-plugin #plotisContainer {
