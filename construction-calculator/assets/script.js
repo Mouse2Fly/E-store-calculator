@@ -213,7 +213,90 @@ $(document).ready(function() {
         }
     });
 
+    function validateForm() {
+        var errors = [];
+        
+        // Section 1: Pagalba - must have active button
+        if ($('.section:first .option-btn.active').length === 0) {
+            errors.push('PRAŠOME PASIRINKTI PAGALBOS TIPĄ (SECTION 1)');
+        }
+        
+        // Section 2: Polių tipas - must have active button
+        if ($('.pole-type-btn.active').length === 0) {
+            errors.push('PRAŠOME PASIRINKTI POLIŲ TIPĄ (SECTION 2)');
+        }
+        
+        // Section 3: Polių dydis - must have AUKŠTIS selected
+        var aukstis3 = $('#poleLengthSelect').val();
+        if (!aukstis3) {
+            errors.push('PRAŠOME PASIRINKTI POLIŲ AUKŠTĮ (SECTION 3)');
+        }
+        
+        // Section 3: If PLOTIS is visible and enabled, must be selected
+        var plotisContainer = $('#plotisContainer');
+        if (plotisContainer.is(':visible') && !$('#plotisSelect').prop('disabled')) {
+            var plotis3 = $('#plotisSelect').val();
+            if (!plotis3) {
+                errors.push('PRAŠOME PASIRINKTI POLIŲ PLOTĮ (SECTION 3)');
+            }
+        }
+        
+        // Section 4: Struktūros matmenys - must have values
+        var widthM = $('.dimension-row:first .dimension-input:eq(0)').val();
+        var widthFt = $('.dimension-row:first .dimension-input:eq(1)').val();
+        var widthIn = $('.dimension-row:first .dimension-input:eq(2)').val();
+        var lengthM = $('.dimension-row:eq(1) .dimension-input:eq(0)').val();
+        var lengthFt = $('.dimension-row:eq(1) .dimension-input:eq(1)').val();
+        var lengthIn = $('.dimension-row:eq(1) .dimension-input:eq(2)').val();
+        
+        if (!widthM || !widthFt || !widthIn || !lengthM || !lengthFt || !lengthIn) {
+            errors.push('PRAŠOME UŽPILDYTI VISUS STRUKTŪROS MATMENIS (SECTION 4)');
+        }
+        
+        // Section 5: Jungiamųjų serijų tipas - must have active button
+        var section5Buttons = $('[data-option="m-tipo"], [data-option="sraigtiniai"]');
+        if (section5Buttons.filter('.active').length === 0) {
+            errors.push('PRAŠOME PASIRINKTI JUNGIAMŲJŲ SERIJŲ TIPĄ (SECTION 5)');
+        }
+        
+        // Section 6: Jungiamųjų serijų dydis - must have AUKŠTIS selected
+        var aukstis6 = $('#connectorLengthSelect').val();
+        if (!aukstis6) {
+            errors.push('PRAŠOME PASIRINKTI JUNGIAMŲJŲ SERIJŲ AUKŠTĮ (SECTION 6)');
+        }
+        
+        // Section 6: If PLOTIS is visible and enabled, must be selected
+        var plotisContainer6 = $('#section6PlotisContainer');
+        if (plotisContainer6.is(':visible') && !$('#section6PlotisSelect').prop('disabled')) {
+            var plotis6 = $('#section6PlotisSelect').val();
+            if (!plotis6) {
+                errors.push('PRAŠOME PASIRINKTI JUNGIAMŲJŲ SERIJŲ PLOTĮ (SECTION 6)');
+            }
+        }
+        
+        // Section 7: Įrangos nuoma - only validate if visible (DIY selected)
+        var section7Visible = $('#section8Header').parent().is(':visible');
+        if (section7Visible) {
+            if ($('#section8 .option-btn.active').length === 0) {
+                errors.push('PRAŠOME PASIRINKTI ĮRANGOS NUOMOS PARINKTĮ (SECTION 7)');
+            }
+        }
+        
+        // Section 9 is optional - no validation needed
+        
+        return errors;
+    }
+
     $('#calculateBtn').click(function() {
+        // Validate form
+        var errors = validateForm();
+        
+        if (errors.length > 0) {
+            // Display errors
+            alert(errors.join('\n\n'));
+            return; // Stop calculation
+        }
+        
         // Section 1: Pagalba (Help)
         var section1Option = $('.section:first .option-btn.active').data('option');
         if (section1Option === 'diy') {
