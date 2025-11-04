@@ -178,20 +178,16 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
-    // Section 1: Show/Hide Section 8 based on installation option
+    // Section 1: Show/Hide Section 7 (equipment rental) based on installation option
     function toggleSection8() {
         var section1Selection = $('.section:first .option-btn.active').data('option');
         
         if (section1Selection === 'diy') {
-            // Show Section 8 when "NEREIKIA" is selected
-            $('#section8Divider').show();
-            $('#section8Header').show();
-            $('#section8Content').show();
+            // Show Section 7 when "NEREIKIA" is selected
+            $('#section8Header').parent().show();
         } else {
-            // Hide Section 8 when professional installation is selected
-            $('#section8Divider').hide();
-            $('#section8Header').hide();
-            $('#section8Content').hide();
+            // Hide Section 7 when professional installation is selected
+            $('#section8Header').parent().hide();
         }
     }
     
