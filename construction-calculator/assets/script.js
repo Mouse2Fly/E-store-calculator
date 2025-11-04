@@ -48,7 +48,7 @@ $(document).ready(function() {
             $plotisSelect.addClass('disabled');
         } else {
             // Multiple options
-            $plotisSelect.append('<option value="">PLEASE SELECT</option>');
+            $plotisSelect.append('<option value=""></option>');
             options.forEach(function(option) {
                 $plotisSelect.append('<option value="' + option + '">' + option + '</option>');
             });
@@ -131,7 +131,7 @@ $(document).ready(function() {
             $plotisSelect.addClass('disabled');
         } else {
             // Multiple options
-            $plotisSelect.append('<option value="">PLEASE SELECT</option>');
+            $plotisSelect.append('<option value=""></option>');
             options.forEach(function(option) {
                 $plotisSelect.append('<option value="' + option + '">' + option + '</option>');
             });
