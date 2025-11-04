@@ -226,7 +226,7 @@ $(document).ready(function() {
         var aukstis3 = $('#poleLengthSelect').val();
         var plotis3 = $('#plotisSelect').val();
         if (aukstis3 && plotis3) {
-            $('#result-poliu-dydis').text(aukstis3 + ' - ' + plotis3);
+            $('#result-poliu-dydis').text(aukstis3 + ' x ' + plotis3);
         } else if (aukstis3) {
             $('#result-poliu-dydis').text(aukstis3);
         } else {
@@ -251,7 +251,7 @@ $(document).ready(function() {
         var aukstis6 = $('#section6AukstisSelect').val();
         var plotis6 = $('#section6PlotisSelect').val();
         if (aukstis6 && plotis6) {
-            $('#result-jungiamuju-dydis').text(aukstis6 + ' - ' + plotis6);
+            $('#result-jungiamuju-dydis').text(aukstis6 + ' x ' + plotis6);
         } else if (aukstis6) {
             $('#result-jungiamuju-dydis').text(aukstis6);
         } else {
