@@ -227,31 +227,31 @@
             <div class="results-table">
                 <div class="result-row">
                     <div class="result-label">Pagalba</div>
-                    <div class="result-value">Input from section 1</div>
+                    <div class="result-value" id="result-pagalba">Nereikia</div>
                 </div>
                 <div class="result-row">
                     <div class="result-label">Polių tipas</div>
-                    <div class="result-value">Input from section 2</div>
+                    <div class="result-value" id="result-poliu-tipas">U tipo</div>
                 </div>
                 <div class="result-row">
                     <div class="result-label">Polių dydis</div>
-                    <div class="result-value">Input from section 3</div>
+                    <div class="result-value" id="result-poliu-dydis">685mm - 71mm</div>
                 </div>
                 <div class="result-row">
                     <div class="result-label">Struktūros matmenys</div>
-                    <div class="result-value">Input from section 4</div>
+                    <div class="result-value" id="result-strukturos-matmenys">3m x 2m (9.10ft x 6.7ft)</div>
                 </div>
                 <div class="result-row">
                     <div class="result-label">Jungiamųjų serijų tipas</div>
-                    <div class="result-value">Input from section 5</div>
+                    <div class="result-value" id="result-jungiamuju-tipas">M tipo</div>
                 </div>
                 <div class="result-row">
                     <div class="result-label">Jungiamųjų serijų dydis</div>
-                    <div class="result-value">Input from section 6</div>
+                    <div class="result-value" id="result-jungiamuju-dydis">1000mm - 68mm</div>
                 </div>
                 <div class="result-row" id="montavimoRow">
                     <div class="result-label">Montavimo įrangos nuoma</div>
-                    <div class="result-value">Input from section 8 and if input in section 1 is "Profesionalus sraigtinių polių montavimas" then set it to "Nereikia"</div>
+                    <div class="result-value" id="result-montavimo">Rankinio polių sukimo įrankio nuoma</div>
                 </div>
             </div>
         </div>
