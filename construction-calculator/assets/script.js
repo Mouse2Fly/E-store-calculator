@@ -168,8 +168,8 @@ $(document).ready(function() {
     // Section 6 Aukstis change handler
     $('#section6AukstisSelect').change(function() {
         var selectedHeight = $(this).val();
-        // Find section 5 active button within the same parent section
-        var section5Type = $(this).closest('.section').find('[data-option="m-tipo"], [data-option="sraigtiniai"]').filter('.active').data('option');
+        // Find section 5 active button
+        var section5Type = $('#section-5 [data-option="m-tipo"], #section-5 [data-option="sraigtiniai"]').filter('.active').data('option');
         updateSection6PlotisSelect(section5Type, selectedHeight);
     });
 
