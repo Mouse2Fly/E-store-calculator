@@ -150,7 +150,7 @@
             
             <div class="section-header">
                 <span class="section-number">6</span>
-                <h2>CHOOSE GROUND SCREW SELECTION</h2>
+                <h2>PASIRINKITE JUNGIAMŲJŲ SERIJŲ DIDĮ</h2>
             </div>
             <div class="pole-length-label">AUKŠTIS</div>
             <select class="dropdown" id="section6AukstisSelect">
