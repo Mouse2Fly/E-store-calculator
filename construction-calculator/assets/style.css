@@ -31,6 +31,12 @@
     border-radius: 12px;
     border-bottom: 1px solid #e8e8e8;
     padding-bottom: 40px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.construction-calculator-plugin .section.has-error {
+    border: 3px solid #d32f2f;
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
 }
 
 .construction-calculator-plugin .section:last-of-type {

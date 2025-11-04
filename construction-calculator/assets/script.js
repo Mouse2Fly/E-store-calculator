@@ -214,22 +214,29 @@ $(document).ready(function() {
     });
 
     function validateForm() {
-        var errors = [];
+        var isValid = true;
+        
+        // Clear all previous error states
+        $('.section').removeClass('has-error');
         
         // Section 1: Pagalba - must have active button
         if ($('.section:first .option-btn.active').length === 0) {
-            errors.push('PRAŠOME PASIRINKTI PAGALBOS TIPĄ (SECTION 1)');
+            $('.section:first').addClass('has-error');
+            isValid = false;
         }
         
         // Section 2: Polių tipas - must have active button
         if ($('.pole-type-btn.active').length === 0) {
-            errors.push('PRAŠOME PASIRINKTI POLIŲ TIPĄ (SECTION 2)');
+            $('.pole-type-btn').closest('.section').addClass('has-error');
+            isValid = false;
         }
         
         // Section 3: Polių dydis - must have AUKŠTIS selected
         var aukstis3 = $('#poleLengthSelect').val();
+        var section3 = $('#poleLengthSelect').closest('.section');
         if (!aukstis3) {
-            errors.push('PRAŠOME PASIRINKTI POLIŲ AUKŠTĮ (SECTION 3)');
+            section3.addClass('has-error');
+            isValid = false;
         }
         
         // Section 3: If PLOTIS is visible and enabled, must be selected
@@ -237,7 +244,8 @@ $(document).ready(function() {
         if (plotisContainer.is(':visible') && !$('#plotisSelect').prop('disabled')) {
             var plotis3 = $('#plotisSelect').val();
             if (!plotis3) {
-                errors.push('PRAŠOME PASIRINKTI POLIŲ PLOTĮ (SECTION 3)');
+                section3.addClass('has-error');
+                isValid = false;
             }
         }
         
@@ -250,19 +258,23 @@ $(document).ready(function() {
         var lengthIn = $('.dimension-row:eq(1) .dimension-input:eq(2)').val();
         
         if (!widthM || !widthFt || !widthIn || !lengthM || !lengthFt || !lengthIn) {
-            errors.push('PRAŠOME UŽPILDYTI VISUS STRUKTŪROS MATMENIS (SECTION 4)');
+            $('.dimension-row').closest('.section').addClass('has-error');
+            isValid = false;
         }
         
         // Section 5: Jungiamųjų serijų tipas - must have active button
         var section5Buttons = $('[data-option="m-tipo"], [data-option="sraigtiniai"]');
         if (section5Buttons.filter('.active').length === 0) {
-            errors.push('PRAŠOME PASIRINKTI JUNGIAMŲJŲ SERIJŲ TIPĄ (SECTION 5)');
+            section5Buttons.closest('.section').addClass('has-error');
+            isValid = false;
         }
         
         // Section 6: Jungiamųjų serijų dydis - must have AUKŠTIS selected
         var aukstis6 = $('#connectorLengthSelect').val();
+        var section6 = $('#connectorLengthSelect').closest('.section');
         if (!aukstis6) {
-            errors.push('PRAŠOME PASIRINKTI JUNGIAMŲJŲ SERIJŲ AUKŠTĮ (SECTION 6)');
+            section6.addClass('has-error');
+            isValid = false;
         }
         
         // Section 6: If PLOTIS is visible and enabled, must be selected
@@ -270,7 +282,8 @@ $(document).ready(function() {
         if (plotisContainer6.is(':visible') && !$('#section6PlotisSelect').prop('disabled')) {
             var plotis6 = $('#section6PlotisSelect').val();
             if (!plotis6) {
-                errors.push('PRAŠOME PASIRINKTI JUNGIAMŲJŲ SERIJŲ PLOTĮ (SECTION 6)');
+                section6.addClass('has-error');
+                isValid = false;
             }
         }
         
@@ -278,24 +291,28 @@ $(document).ready(function() {
         var section7Visible = $('#section8Header').parent().is(':visible');
         if (section7Visible) {
             if ($('#section8 .option-btn.active').length === 0) {
-                errors.push('PRAŠOME PASIRINKTI ĮRANGOS NUOMOS PARINKTĮ (SECTION 7)');
+                $('#section8').addClass('has-error');
+                isValid = false;
             }
         }
         
         // Section 9 is optional - no validation needed
         
-        return errors;
+        return isValid;
     }
 
     $('#calculateBtn').click(function() {
         // Validate form
-        var errors = validateForm();
+        var isValid = validateForm();
         
-        if (errors.length > 0) {
-            // Display errors
-            alert(errors.join('\n\n'));
+        if (!isValid) {
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             return; // Stop calculation
         }
+        
+        // Clear error states since validation passed
+        $('.section').removeClass('has-error');
         
         // Section 1: Pagalba (Help)
         var section1Option = $('.section:first .option-btn.active').data('option');
