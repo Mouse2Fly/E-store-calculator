@@ -180,19 +180,19 @@ $(document).ready(function() {
 
     // Section 1: Show/Hide Section 7 (equipment rental) based on installation option
     function toggleSection8() {
-        var section1Selection = $('.section:first .option-btn.active').data('option');
+        var section1Selection = $('#section-1 .option-btn.active').data('option');
         
         if (section1Selection === 'diy') {
             // Show Section 7 when "NEREIKIA" is selected
-            $('#section8Header').parent().show();
+            $('#section-7').show();
         } else {
             // Hide Section 7 when professional installation is selected
-            $('#section8Header').parent().hide();
+            $('#section-7').hide();
         }
     }
     
     // Listen to Section 1 button clicks
-    $('.section:first .option-btn').click(function() {
+    $('#section-1 .option-btn').click(function() {
         toggleSection8();
     });
     
@@ -215,31 +215,31 @@ $(document).ready(function() {
 
     function validateForm() {
         var isValid = true;
-        var errors123 = [];
-        var errors456 = [];
-        var error7 = '';
         
         // Clear all previous error states and messages
         $('.section').removeClass('has-error');
         $('.error-message').text('');
         
         // Section 1: Pagalba - must have active button
-        if ($('.section:first .option-btn.active').length === 0) {
-            errors123.push('Prašome pasirinkti pagalbos tipą (Section 1)');
+        if ($('#section-1 .option-btn.active').length === 0) {
+            $('#section-1').addClass('has-error');
+            $('#error-section-1').text('Prašome pasirinkti pagalbos tipą');
             isValid = false;
         }
         
         // Section 2: Polių tipas - must have active button
-        if ($('.pole-type-btn.active').length === 0) {
-            errors123.push('Prašome pasirinkti polių tipą (Section 2)');
+        if ($('#section-2 .pole-type-btn.active').length === 0) {
+            $('#section-2').addClass('has-error');
+            $('#error-section-2').text('Prašome pasirinkti polių tipą');
             isValid = false;
         }
         
         // Section 3: Polių dydis - must have AUKŠTIS selected
         var aukstis3 = $('#poleLengthSelect').val();
+        var plotisErrors = [];
+        
         if (!aukstis3) {
-            errors123.push('Prašome pasirinkti polių aukštį (Section 3)');
-            isValid = false;
+            plotisErrors.push('Prašome pasirinkti polių aukštį');
         }
         
         // Section 3: If PLOTIS is visible and enabled, must be selected
@@ -247,15 +247,14 @@ $(document).ready(function() {
         if (plotisContainer.is(':visible') && !$('#plotisSelect').prop('disabled')) {
             var plotis3 = $('#plotisSelect').val();
             if (!plotis3) {
-                errors123.push('Prašome pasirinkti polių plotį (Section 3)');
-                isValid = false;
+                plotisErrors.push('Prašome pasirinkti polių plotį');
             }
         }
         
-        // Show errors for sections 1-3 if any
-        if (errors123.length > 0) {
-            $('.section:first').addClass('has-error');
-            $('#error-section-123').text(errors123.join(' | '));
+        if (plotisErrors.length > 0) {
+            $('#section-3').addClass('has-error');
+            $('#error-section-3').text(plotisErrors.join(' | '));
+            isValid = false;
         }
         
         // Section 4: Struktūros matmenys - must have values
@@ -267,22 +266,24 @@ $(document).ready(function() {
         var lengthIn = $('.dimension-row:eq(1) .dimension-input:eq(2)').val();
         
         if (!widthM || !widthFt || !widthIn || !lengthM || !lengthFt || !lengthIn) {
-            errors456.push('Prašome užpildyti visus struktūros matmenis (Section 4)');
+            $('#section-4').addClass('has-error');
+            $('#error-section-4').text('Prašome užpildyti visus struktūros matmenis');
             isValid = false;
         }
         
         // Section 5: Jungiamųjų serijų tipas - must have active button
-        var section5Buttons = $('[data-option="m-tipo"], [data-option="sraigtiniai"]');
-        if (section5Buttons.filter('.active').length === 0) {
-            errors456.push('Prašome pasirinkti jungiamųjų serijų tipą (Section 5)');
+        if ($('#section-5 .option-btn.active').length === 0) {
+            $('#section-5').addClass('has-error');
+            $('#error-section-5').text('Prašome pasirinkti jungiamųjų serijų tipą');
             isValid = false;
         }
         
         // Section 6: Jungiamųjų serijų dydis - must have AUKŠTIS selected
         var aukstis6 = $('#section6AukstisSelect').val();
+        var section6Errors = [];
+        
         if (!aukstis6) {
-            errors456.push('Prašome pasirinkti jungiamųjų serijų aukštį (Section 6)');
-            isValid = false;
+            section6Errors.push('Prašome pasirinkti jungiamųjų serijų aukštį');
         }
         
         // Section 6: If PLOTIS is visible and enabled, must be selected
@@ -290,24 +291,21 @@ $(document).ready(function() {
         if (plotisContainer6.is(':visible') && !$('#section6PlotisSelect').prop('disabled')) {
             var plotis6 = $('#section6PlotisSelect').val();
             if (!plotis6) {
-                errors456.push('Prašome pasirinkti jungiamųjų serijų plotį (Section 6)');
-                isValid = false;
+                section6Errors.push('Prašome pasirinkti jungiamųjų serijų plotį');
             }
         }
         
-        // Show errors for sections 4-6 if any
-        if (errors456.length > 0) {
-            $('.dimension-row').closest('.section').addClass('has-error');
-            $('#error-section-456').text(errors456.join(' | '));
+        if (section6Errors.length > 0) {
+            $('#section-6').addClass('has-error');
+            $('#error-section-6').text(section6Errors.join(' | '));
+            isValid = false;
         }
         
         // Section 7: Įrangos nuoma - only validate if visible (DIY selected)
-        var section7Visible = $('#section8Header').parent().is(':visible');
-        if (section7Visible) {
-            if ($('#section8 .option-btn.active').length === 0) {
-                error7 = 'Prašome pasirinkti įrangos nuomos parinktį (Section 7)';
-                $('#section8Header').parent().addClass('has-error');
-                $('#error-section-7').text(error7);
+        if ($('#section-7').is(':visible')) {
+            if ($('#section-7 .tool-btn.active').length === 0) {
+                $('#section-7').addClass('has-error');
+                $('#error-section-7').text('Prašome pasirinkti įrangos nuomos parinktį');
                 isValid = false;
             }
         }

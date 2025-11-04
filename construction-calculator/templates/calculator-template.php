@@ -2,7 +2,7 @@
 <div class="calculator-container">
     <div class="calculator">
         
-        <div class="section">
+        <div class="section" id="section-1">
             <div class="section-header">
                 <span class="section-number">1</span>
                 <h2>AR JUMS REIKĖS PAGALBOS SU JŪSŲ PROJEKTŲ AR PATS JĮ DARYSITE?</h2>
@@ -11,9 +11,10 @@
                 <button class="option-btn active" data-option="diy">NEREIKIA</button>
                 <button class="option-btn" data-option="professional">PROFESIONALUS SRAIGTINIŲ POLIŲ MONTAVIMAS</button>
             </div>
-            
-            <div class="subsection-divider"></div>
-            
+            <div class="error-message" id="error-section-1"></div>
+        </div>
+
+        <div class="section" id="section-2">
             <div class="section-header">
                 <span class="section-number">2</span>
                 <h2>PASIRINKITE JŪSŲ POLIŲ TIPĄ</h2>
@@ -22,9 +23,10 @@
                 <button class="option-btn pole-type-btn active" data-option="u-tipo">U TIPO</button>
                 <button class="option-btn pole-type-btn" data-option="m-tipo">M TIPO</button>
             </div>
-            
-            <div class="subsection-divider"></div>
-            
+            <div class="error-message" id="error-section-2"></div>
+        </div>
+
+        <div class="section" id="section-3">
             <div class="section-header">
                 <span class="section-number">3</span>
                 <h2>PASIRINKITE POLIŲ DYDĮ</h2>
@@ -49,10 +51,10 @@
                     <option value=""></option>
                 </select>
             </div>
-            <div class="error-message" id="error-section-123"></div>
+            <div class="error-message" id="error-section-3"></div>
         </div>
 
-        <div class="section">
+        <div class="section" id="section-4">
             <div class="section-header">
                 <span class="section-number">4</span>
                 <h2>WHAT ARE THE DIMENSIONS OF YOUR STRUCTURE?</h2>
@@ -135,9 +137,10 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="subsection-divider"></div>
-            
+            <div class="error-message" id="error-section-4"></div>
+        </div>
+
+        <div class="section" id="section-5">
             <div class="section-header">
                 <span class="section-number">5</span>
                 <h2>PASIRINKITE JUNGIAMŲJŲ SERIJŲ TIPĄ</h2>
@@ -146,9 +149,10 @@
                 <button class="option-btn active" data-option="m-tipo">M TIPO</button>
                 <button class="option-btn" data-option="sraigtiniai">SRAIGTINIAI POLIAI</button>
             </div>
-            
-            <div class="subsection-divider"></div>
-            
+            <div class="error-message" id="error-section-5"></div>
+        </div>
+
+        <div class="section" id="section-6">
             <div class="section-header">
                 <span class="section-number">6</span>
                 <h2>PASIRINKITE JUNGIAMŲJŲ SERIJŲ DYDĮ</h2>
@@ -168,10 +172,10 @@
                     <option value=""></option>
                 </select>
             </div>
-            <div class="error-message" id="error-section-456"></div>
+            <div class="error-message" id="error-section-6"></div>
         </div>
 
-        <div class="section">
+        <div class="section" id="section-7">
             <div class="section-header" id="section8Header">
                 <span class="section-number">7</span>
                 <h2>MONTAVIMO ĮRANGOS NUOMA</h2>
@@ -185,7 +189,7 @@
             <div class="error-message" id="error-section-7"></div>
         </div>
 
-        <div class="section">
+        <div class="section" id="section-9">
             <div class="section-header">
                 <span class="section-number">9</span>
                 <h2>ADDITIONAL ITEMS</h2>
