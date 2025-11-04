@@ -215,8 +215,12 @@ $(document).ready(function() {
 
     $('#calculateBtn').click(function() {
         // Section 1: Pagalba (Help)
-        var section1Text = $('.section:first .option-btn.active').text();
-        $('#result-pagalba').text(section1Text.charAt(0) + section1Text.slice(1).toLowerCase());
+        var section1Option = $('.section:first .option-btn.active').data('option');
+        if (section1Option === 'diy') {
+            $('#result-pagalba').text('Nereikia');
+        } else {
+            $('#result-pagalba').text('Profesionalus sraigtinių polių montavimas');
+        }
         
         // Section 2: Polių tipas (Pole type)
         var section2Text = $('.pole-type-btn.active').text();
