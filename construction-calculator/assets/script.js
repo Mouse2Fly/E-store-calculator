@@ -214,6 +214,60 @@ $(document).ready(function() {
     });
 
     $('#calculateBtn').click(function() {
+        // Section 1: Pagalba (Help)
+        var section1Text = $('.section:first .option-btn.active').text();
+        $('#result-pagalba').text(section1Text.charAt(0) + section1Text.slice(1).toLowerCase());
+        
+        // Section 2: Polių tipas (Pole type)
+        var section2Text = $('.pole-type-btn.active').text();
+        $('#result-poliu-tipas').text(section2Text.charAt(0) + section2Text.slice(1).toLowerCase());
+        
+        // Section 3: Polių dydis (Pole size - AUKŠTIS and PLOTIS)
+        var aukstis3 = $('#poleLengthSelect').val();
+        var plotis3 = $('#plotisSelect').val();
+        if (aukstis3 && plotis3) {
+            $('#result-poliu-dydis').text(aukstis3 + ' - ' + plotis3);
+        } else if (aukstis3) {
+            $('#result-poliu-dydis').text(aukstis3);
+        } else {
+            $('#result-poliu-dydis').text('Not selected');
+        }
+        
+        // Section 4: Struktūros matmenys (Structure dimensions)
+        var widthM = $('.dimension-row:first .dimension-input:eq(0)').val();
+        var widthFt = $('.dimension-row:first .dimension-input:eq(1)').val();
+        var widthIn = $('.dimension-row:first .dimension-input:eq(2)').val();
+        var lengthM = $('.dimension-row:eq(1) .dimension-input:eq(0)').val();
+        var lengthFt = $('.dimension-row:eq(1) .dimension-input:eq(1)').val();
+        var lengthIn = $('.dimension-row:eq(1) .dimension-input:eq(2)').val();
+        $('#result-strukturos-matmenys').text(widthM + 'm x ' + lengthM + 'm (' + widthFt + '.' + widthIn + 'ft x ' + lengthFt + '.' + lengthIn + 'ft)');
+        
+        // Section 5: Jungiamųjų serijų tipas (Connector series type)
+        var section5Buttons = $('[data-option="m-tipo"], [data-option="sraigtiniai"]');
+        var section5Text = section5Buttons.filter('.active').text();
+        $('#result-jungiamuju-tipas').text(section5Text.charAt(0) + section5Text.slice(1).toLowerCase());
+        
+        // Section 6: Jungiamųjų serijų dydis (Connector series size - AUKŠTIS and PLOTIS)
+        var aukstis6 = $('#section6AukstisSelect').val();
+        var plotis6 = $('#section6PlotisSelect').val();
+        if (aukstis6 && plotis6) {
+            $('#result-jungiamuju-dydis').text(aukstis6 + ' - ' + plotis6);
+        } else if (aukstis6) {
+            $('#result-jungiamuju-dydis').text(aukstis6);
+        } else {
+            $('#result-jungiamuju-dydis').text('Not selected');
+        }
+        
+        // Section 7: Montavimo įrangos nuoma (Equipment rental)
+        // If section 1 is "Profesionalus sraigtinių polių montavimas", set to "Nereikia"
+        var section1Option = $('.section:first .option-btn.active').data('option');
+        if (section1Option === 'professional') {
+            $('#result-montavimo').text('Nereikia');
+        } else {
+            var toolText = $('.tool-btn.active').text();
+            $('#result-montavimo').text(toolText.charAt(0) + toolText.slice(1).toLowerCase());
+        }
+        
         $('#resultsSection').slideDown(600).addClass('show');
         $('#cartSection').slideDown(600).addClass('show');
         
