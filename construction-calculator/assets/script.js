@@ -178,6 +178,31 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
+    // Section 1: Show/Hide Section 8 based on installation option
+    function toggleSection8() {
+        var section1Selection = $('.section:first .option-btn.active').data('option');
+        
+        if (section1Selection === 'diy') {
+            // Show Section 8 when "NEREIKIA" is selected
+            $('#section8Divider').show();
+            $('#section8Header').show();
+            $('#section8Content').show();
+        } else {
+            // Hide Section 8 when professional installation is selected
+            $('#section8Divider').hide();
+            $('#section8Header').hide();
+            $('#section8Content').hide();
+        }
+    }
+    
+    // Listen to Section 1 button clicks
+    $('.section:first .option-btn').click(function() {
+        toggleSection8();
+    });
+    
+    // Set initial state on page load
+    toggleSection8();
+
     $('.spinner-btn.up').click(function() {
         var input = $(this).closest('.input-box').find('.dimension-input');
         var currentValue = parseInt(input.val()) || 0;

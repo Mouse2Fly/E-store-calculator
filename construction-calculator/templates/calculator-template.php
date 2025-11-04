@@ -181,13 +181,13 @@
                 <option value="heavy-duty">Heavy Duty Bracket System</option>
             </select>
             
-            <div class="subsection-divider"></div>
+            <div class="subsection-divider" id="section8Divider"></div>
             
-            <div class="section-header">
+            <div class="section-header" id="section8Header">
                 <span class="section-number">8</span>
                 <h2>MONTAVIMO ĮRANGOS NUOMA</h2>
             </div>
-            <div class="tool-grid">
+            <div class="tool-grid" id="section8Content">
                 <button class="tool-btn" data-tool="none">NEREIKIA</button>
                 <button class="tool-btn active" data-tool="manual">RANKINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
                 <button class="tool-btn" data-tool="professional">ELEKTRINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
