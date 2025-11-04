@@ -49,6 +49,7 @@
                     <option value=""></option>
                 </select>
             </div>
+            <div class="error-message" id="error-section-123"></div>
         </div>
 
         <div class="section">
@@ -167,6 +168,7 @@
                     <option value=""></option>
                 </select>
             </div>
+            <div class="error-message" id="error-section-456"></div>
         </div>
 
         <div class="section">
@@ -180,6 +182,7 @@
                 <button class="tool-btn" data-tool="professional">ELEKTRINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
                 <button class="tool-btn" data-tool="hire">ELEKTRINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
             </div>
+            <div class="error-message" id="error-section-7"></div>
         </div>
 
         <div class="section">
