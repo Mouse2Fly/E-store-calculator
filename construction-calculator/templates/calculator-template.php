@@ -32,7 +32,7 @@
                 <span class="section-number">3</span>
                 <h2>PASIRINKITE POLIŲ DYDĮ</h2>
             </div>
-            <div class="pole-length-label">AUKŠTIS</div>
+            <div class="pole-length-label">PLOTIS</div>
             <select class="dropdown" id="poleLengthSelect">
                 <option value=""></option>
                 <option value="685mm" data-type="u-tipo">685mm</option>
@@ -50,7 +50,7 @@
                 <option value="1200mm-s" data-type="sraigtiniai" style="display:none;">1200mm</option>
             </select>
             <div id="plotisContainer" style="display:none;">
-                <div class="pole-length-label">PLOTIS</div>
+                <div class="pole-length-label">AUKŠTIS</div>
                 <select class="dropdown" id="plotisSelect">
                     <option value=""></option>
                 </select>

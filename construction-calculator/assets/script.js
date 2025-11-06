@@ -154,20 +154,20 @@ $(document).ready(function() {
             isValid = false;
         }
         
-        // Section 3: Polių dydis - must have AUKŠTIS selected
-        var aukstis3 = $('#poleLengthSelect').val();
+        // Section 3: Polių dydis - must have PLOTIS selected
+        var plotis3 = $('#poleLengthSelect').val();
         var plotisErrors = [];
         
-        if (!aukstis3) {
-            plotisErrors.push('Prašome pasirinkti polių aukštį');
+        if (!plotis3) {
+            plotisErrors.push('Prašome pasirinkti polių plotį');
         }
         
-        // Section 3: If PLOTIS is visible and enabled, must be selected
+        // Section 3: If AUKŠTIS is visible and enabled, must be selected
         var plotisContainer = $('#plotisContainer');
         if (plotisContainer.is(':visible') && !$('#plotisSelect').prop('disabled')) {
-            var plotis3 = $('#plotisSelect').val();
-            if (!plotis3) {
-                plotisErrors.push('Prašome pasirinkti polių plotį');
+            var aukstis3 = $('#plotisSelect').val();
+            if (!aukstis3) {
+                plotisErrors.push('Prašome pasirinkti polių aukštį');
             }
         }
         
@@ -230,13 +230,13 @@ $(document).ready(function() {
         var section2Text = $('.pole-type-btn.active').text();
         $('#result-poliu-tipas').text(section2Text.charAt(0) + section2Text.slice(1).toLowerCase());
         
-        // Section 3: Polių dydis (Pole size - AUKŠTIS and PLOTIS)
-        var aukstis3 = $('#poleLengthSelect').val();
-        var plotis3 = $('#plotisSelect').val();
-        if (aukstis3 && plotis3) {
-            $('#result-poliu-dydis').text(aukstis3 + ' x ' + plotis3);
-        } else if (aukstis3) {
-            $('#result-poliu-dydis').text(aukstis3);
+        // Section 3: Polių dydis (Pole size - PLOTIS and AUKŠTIS)
+        var plotis3 = $('#poleLengthSelect').val();
+        var aukstis3 = $('#plotisSelect').val();
+        if (plotis3 && aukstis3) {
+            $('#result-poliu-dydis').text(plotis3 + ' x ' + aukstis3);
+        } else if (plotis3) {
+            $('#result-poliu-dydis').text(plotis3);
         } else {
             $('#result-poliu-dydis').text('Not selected');
         }
