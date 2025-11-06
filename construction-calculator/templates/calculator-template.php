@@ -62,7 +62,7 @@
                 <div class="dimension-row">
                     <label class="dimension-label">
                         <span class="icon">↔</span>
-                        <span>WIDTH</span>
+                        <span>PLOTIS</span>
                     </label>
                     <div class="dimension-inputs">
                         <div class="input-group">
@@ -90,7 +90,7 @@
                 <div class="dimension-row">
                     <label class="dimension-label">
                         <span class="icon">↕</span>
-                        <span>LENGTH</span>
+                        <span>ILGIS</span>
                     </label>
                     <div class="dimension-inputs">
                         <div class="input-group">
