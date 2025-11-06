@@ -56,7 +56,7 @@
         <div class="section" id="section-4">
             <div class="section-header">
                 <span class="section-number">4</span>
-                <h2>WHAT ARE THE DIMENSIONS OF YOUR STRUCTURE?</h2>
+                <h2>KOKIE YRA JŪSŲ PROJEKTO MATMENYS?</h2>
             </div>
             <div class="dimension-group">
                 <div class="dimension-row">
@@ -73,7 +73,7 @@
                                     <button class="spinner-btn down">▼</button>
                                 </div>
                             </div>
-                            <span class="unit">METRES</span>
+                            <span class="unit">METRAI</span>
                         </div>
                         <div class="input-group">
                             <div class="input-box">
@@ -83,7 +83,7 @@
                                     <button class="spinner-btn down">▼</button>
                                 </div>
                             </div>
-                            <span class="unit">CENTIMETERS</span>
+                            <span class="unit">CENTIMETRAI</span>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                                     <button class="spinner-btn down">▼</button>
                                 </div>
                             </div>
-                            <span class="unit">METRES</span>
+                            <span class="unit">METRAI</span>
                         </div>
                         <div class="input-group">
                             <div class="input-box">
@@ -111,7 +111,7 @@
                                     <button class="spinner-btn down">▼</button>
                                 </div>
                             </div>
-                            <span class="unit">CENTIMETERS</span>
+                            <span class="unit">CENTIMETRAI</span>
                         </div>
                     </div>
                 </div>
