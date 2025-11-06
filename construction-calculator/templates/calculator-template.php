@@ -67,7 +67,7 @@
                     <div class="dimension-inputs">
                         <div class="input-group">
                             <div class="input-box">
-                                <input type="number" value="3" min="0" class="dimension-input">
+                                <input type="number" value="0" min="0" class="dimension-input">
                                 <div class="spinner-controls">
                                     <button class="spinner-btn up">▲</button>
                                     <button class="spinner-btn down">▼</button>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="input-group">
                             <div class="input-box">
-                                <input type="number" value="50" min="0" max="99" class="dimension-input">
+                                <input type="number" value="0" min="0" max="99" class="dimension-input">
                                 <div class="spinner-controls">
                                     <button class="spinner-btn up">▲</button>
                                     <button class="spinner-btn down">▼</button>
@@ -95,7 +95,7 @@
                     <div class="dimension-inputs">
                         <div class="input-group">
                             <div class="input-box">
-                                <input type="number" value="2" min="0" class="dimension-input">
+                                <input type="number" value="0" min="0" class="dimension-input">
                                 <div class="spinner-controls">
                                     <button class="spinner-btn up">▲</button>
                                     <button class="spinner-btn down">▼</button>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="input-group">
                             <div class="input-box">
-                                <input type="number" value="25" min="0" max="99" class="dimension-input">
+                                <input type="number" value="0" min="0" max="99" class="dimension-input">
                                 <div class="spinner-controls">
                                     <button class="spinner-btn up">▲</button>
                                     <button class="spinner-btn down">▼</button>
@@ -125,8 +125,8 @@
                 <h2>MONTAVIMO ĮRANGOS NUOMA</h2>
             </div>
             <div class="tool-grid" id="section8Content">
-                <button class="tool-btn" data-tool="none">NEREIKIA</button>
-                <button class="tool-btn active" data-tool="manual">RANKINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
+                <button class="tool-btn active" data-tool="none">NEREIKIA</button>
+                <button class="tool-btn" data-tool="manual">RANKINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
                 <button class="tool-btn" data-tool="professional">ELEKTRINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
                 <button class="tool-btn" data-tool="hire">ELEKTRINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
             </div>
