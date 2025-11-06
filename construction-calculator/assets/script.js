@@ -195,15 +195,14 @@ $(document).ready(function() {
             isValid = false;
         }
         
-        // Section 4: Struktūros matmenys - must have values
+        // Section 4: Struktūros matmenys - must have values (centimeters can be 0)
         var widthM = $('.dimension-row:first .dimension-input:eq(0)').val();
-        var widthFt = $('.dimension-row:first .dimension-input:eq(1)').val();
-        var widthIn = $('.dimension-row:first .dimension-input:eq(2)').val();
+        var widthCm = $('.dimension-row:first .dimension-input:eq(1)').val();
         var lengthM = $('.dimension-row:eq(1) .dimension-input:eq(0)').val();
-        var lengthFt = $('.dimension-row:eq(1) .dimension-input:eq(1)').val();
-        var lengthIn = $('.dimension-row:eq(1) .dimension-input:eq(2)').val();
+        var lengthCm = $('.dimension-row:eq(1) .dimension-input:eq(1)').val();
         
-        if (!widthM || !widthFt || !widthIn || !lengthM || !lengthFt || !lengthIn) {
+        // Check if values are present (0 is allowed for centimeters)
+        if (widthM === '' || widthCm === '' || lengthM === '' || lengthCm === '') {
             $('#section-4').addClass('has-error');
             $('#error-section-4').text('Prašome užpildyti visus struktūros matmenis');
             isValid = false;
