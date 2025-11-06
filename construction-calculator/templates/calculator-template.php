@@ -30,7 +30,7 @@
         <div class="section" id="section-3">
             <div class="section-header">
                 <span class="section-number">3</span>
-                <h2>PASIRINKITE POLIŲ DYDĮ</h2>
+                <h2>PASIRINKITE DYDĮ</h2>
             </div>
             <div class="pole-length-label">PLOTIS</div>
             <select class="dropdown" id="poleLengthSelect">
