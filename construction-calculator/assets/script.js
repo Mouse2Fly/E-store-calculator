@@ -5,7 +5,7 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
-    // Aukstis options mapping (inverted - now PLOTIS first, then AUKSTIS)
+    // Aukstis options mapping
     var aukstisOptions = {
         'u-tipo': {
             '71mm': ['685mm'],
@@ -13,16 +13,16 @@ $(document).ready(function() {
             '101mm': ['885mm', '1000mm', '1085mm', '1300mm']
         },
         'm-tipo': {
-            '68mm': ['750mm', '1000mm-m', '1200mm', '1400mm'],
+            '68mm': ['750mm', '1000mm', '1200mm', '1400mm'],
             '76mm': ['1200mm', '1400mm', '2050mm'],
             '89mm': ['1200mm']
         },
         'sraigtiniai': {
-            '76mm-s': ['500mm', '1200mm-s'],
-            '89mm-s': ['500mm', '1200mm-s'],
-            '68mm': ['1000mm-s'],
-            '76mm': ['1000mm-s'],
-            '89mm': ['1000mm-s']
+            '76mm-s': ['500mm', '1200mm'],
+            '89mm-s': ['500mm', '1200mm'],
+            '68mm': ['1000mm'],
+            '76mm': ['1000mm'],
+            '89mm': ['1000mm']
         }
     };
 
