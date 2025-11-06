@@ -195,16 +195,20 @@ $(document).ready(function() {
             isValid = false;
         }
         
-        // Section 4: Struktūros matmenys - must have values (centimeters can be 0)
+        // Section 4: Struktūros matmenys - meters must be > 0, centimeters can be 0
         var widthM = $('.dimension-row:first .dimension-input:eq(0)').val();
         var widthCm = $('.dimension-row:first .dimension-input:eq(1)').val();
         var lengthM = $('.dimension-row:eq(1) .dimension-input:eq(0)').val();
         var lengthCm = $('.dimension-row:eq(1) .dimension-input:eq(1)').val();
         
-        // Check if values are present (0 is allowed for centimeters)
+        // Check if values are present and meters are > 0
         if (widthM === '' || widthCm === '' || lengthM === '' || lengthCm === '') {
             $('#section-4').addClass('has-error');
             $('#error-section-4').text('Prašome užpildyti visus struktūros matmenis');
+            isValid = false;
+        } else if (parseInt(widthM) <= 0 || parseInt(lengthM) <= 0) {
+            $('#section-4').addClass('has-error');
+            $('#error-section-4').text('Metrai turi būti didesni nei 0');
             isValid = false;
         }
         
