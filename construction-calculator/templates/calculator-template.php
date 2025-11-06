@@ -77,23 +77,13 @@
                         </div>
                         <div class="input-group">
                             <div class="input-box">
-                                <input type="number" value="9" min="0" class="dimension-input">
+                                <input type="number" value="50" min="0" max="99" class="dimension-input">
                                 <div class="spinner-controls">
                                     <button class="spinner-btn up">▲</button>
                                     <button class="spinner-btn down">▼</button>
                                 </div>
                             </div>
-                            <span class="unit">FEET</span>
-                        </div>
-                        <div class="input-group">
-                            <div class="input-box">
-                                <input type="number" value="10" min="0" class="dimension-input">
-                                <div class="spinner-controls">
-                                    <button class="spinner-btn up">▲</button>
-                                    <button class="spinner-btn down">▼</button>
-                                </div>
-                            </div>
-                            <span class="unit">INCHES</span>
+                            <span class="unit">CENTIMETERS</span>
                         </div>
                     </div>
                 </div>
@@ -115,23 +105,13 @@
                         </div>
                         <div class="input-group">
                             <div class="input-box">
-                                <input type="number" value="6" min="0" class="dimension-input">
+                                <input type="number" value="25" min="0" max="99" class="dimension-input">
                                 <div class="spinner-controls">
                                     <button class="spinner-btn up">▲</button>
                                     <button class="spinner-btn down">▼</button>
                                 </div>
                             </div>
-                            <span class="unit">FEET</span>
-                        </div>
-                        <div class="input-group">
-                            <div class="input-box">
-                                <input type="number" value="7" min="0" class="dimension-input">
-                                <div class="spinner-controls">
-                                    <button class="spinner-btn up">▲</button>
-                                    <button class="spinner-btn down">▼</button>
-                                </div>
-                            </div>
-                            <span class="unit">INCHES</span>
+                            <span class="unit">CENTIMETERS</span>
                         </div>
                     </div>
                 </div>

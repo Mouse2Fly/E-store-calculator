@@ -120,6 +120,11 @@ $(document).ready(function() {
     $('.spinner-btn.up').click(function() {
         var input = $(this).closest('.input-box').find('.dimension-input');
         var currentValue = parseInt(input.val()) || 0;
+        var maxValue = input.attr('max');
+        
+        if (maxValue && currentValue >= parseInt(maxValue)) {
+            return;
+        }
         input.val(currentValue + 1);
     });
 
@@ -128,6 +133,21 @@ $(document).ready(function() {
         var currentValue = parseInt(input.val()) || 0;
         if (currentValue > 0) {
             input.val(currentValue - 1);
+        }
+    });
+    
+    // Enforce min/max constraints on manual input
+    $('.dimension-input').on('input', function() {
+        var input = $(this);
+        var value = parseInt(input.val());
+        var min = parseInt(input.attr('min'));
+        var max = parseInt(input.attr('max'));
+        
+        if (!isNaN(min) && value < min) {
+            input.val(min);
+        }
+        if (!isNaN(max) && value > max) {
+            input.val(max);
         }
     });
 
@@ -241,12 +261,10 @@ $(document).ready(function() {
         
         // Section 4: Struktūros matmenys (Structure dimensions)
         var widthM = $('.dimension-row:first .dimension-input:eq(0)').val();
-        var widthFt = $('.dimension-row:first .dimension-input:eq(1)').val();
-        var widthIn = $('.dimension-row:first .dimension-input:eq(2)').val();
+        var widthCm = $('.dimension-row:first .dimension-input:eq(1)').val();
         var lengthM = $('.dimension-row:eq(1) .dimension-input:eq(0)').val();
-        var lengthFt = $('.dimension-row:eq(1) .dimension-input:eq(1)').val();
-        var lengthIn = $('.dimension-row:eq(1) .dimension-input:eq(2)').val();
-        $('#result-strukturos-matmenys').text(widthM + 'm x ' + lengthM + 'm (' + widthFt + '.' + widthIn + 'ft x ' + lengthFt + '.' + lengthIn + 'ft)');
+        var lengthCm = $('.dimension-row:eq(1) .dimension-input:eq(1)').val();
+        $('#result-strukturos-matmenys').text(widthM + 'm ' + widthCm + 'cm x ' + lengthM + 'm ' + lengthCm + 'cm');
         
         
         // Section 5: Montavimo įrangos nuoma (Equipment rental)
