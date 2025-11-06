@@ -5,63 +5,61 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
-    // Plotis options mapping
-    var plotisOptions = {
+    // Aukstis options mapping (inverted - now PLOTIS first, then AUKSTIS)
+    var aukstisOptions = {
         'u-tipo': {
-            '685mm': ['71mm', '81mm'],
-            '885mm': ['101mm'],
-            '1000mm': ['101mm'],
-            '1085mm': ['101mm'],
-            '1300mm': ['101mm']
+            '71mm': ['685mm'],
+            '81mm': ['685mm'],
+            '101mm': ['885mm', '1000mm', '1085mm', '1300mm']
         },
         'm-tipo': {
-            '750mm': ['68mm'],
-            '1000mm-m': ['68mm'],
-            '1200mm': ['68mm', '76mm', '89mm'],
-            '1400mm': ['68mm', '76mm'],
-            '2050mm': ['76mm']
+            '68mm': ['750mm', '1000mm-m', '1200mm', '1400mm'],
+            '76mm': ['1200mm', '1400mm', '2050mm'],
+            '89mm': ['1200mm']
         },
         'sraigtiniai': {
-            '500mm': ['76mm', '89mm'],
-            '1000mm-s': ['68mm', '76mm', '89mm'],
-            '1200mm-s': ['76mm', '89mm']
+            '76mm-s': ['500mm', '1200mm-s'],
+            '89mm-s': ['500mm', '1200mm-s'],
+            '68mm': ['1000mm-s'],
+            '76mm': ['1000mm-s'],
+            '89mm': ['1000mm-s']
         }
     };
 
-    function updatePlotisSelect(poleType, height) {
-        var $plotisContainer = $('#plotisContainer');
-        var $plotisSelect = $('#plotisSelect');
+    function updateAukstisSelect(poleType, width) {
+        var $aukstisContainer = $('#plotisContainer');
+        var $aukstisSelect = $('#plotisSelect');
         
-        if (!height) {
-            $plotisContainer.hide();
+        if (!width) {
+            $aukstisContainer.hide();
             return;
         }
         
-        var options = plotisOptions[poleType][height];
+        var options = aukstisOptions[poleType][width];
         if (!options) {
-            $plotisContainer.hide();
+            $aukstisContainer.hide();
             return;
         }
         
         // Clear existing options
-        $plotisSelect.empty();
+        $aukstisSelect.empty();
         
         // If only one option, auto-select and disable
         if (options.length === 1) {
-            $plotisSelect.append('<option value="' + options[0] + '" selected>' + options[0] + '</option>');
-            $plotisSelect.prop('disabled', true);
-            $plotisSelect.addClass('disabled');
+            $aukstisSelect.append('<option value="' + options[0] + '" selected>' + options[0] + '</option>');
+            $aukstisSelect.prop('disabled', true);
+            $aukstisSelect.addClass('disabled');
         } else {
             // Multiple options
-            $plotisSelect.append('<option value=""></option>');
+            $aukstisSelect.append('<option value=""></option>');
             options.forEach(function(option) {
-                $plotisSelect.append('<option value="' + option + '">' + option + '</option>');
+                $aukstisSelect.append('<option value="' + option + '">' + option + '</option>');
             });
-            $plotisSelect.prop('disabled', false);
-            $plotisSelect.removeClass('disabled');
+            $aukstisSelect.prop('disabled', false);
+            $aukstisSelect.removeClass('disabled');
         }
         
-        $plotisContainer.show();
+        $aukstisContainer.show();
     }
 
     $('.pole-type-btn').click(function() {
@@ -82,14 +80,14 @@ $(document).ready(function() {
             }
         });
         
-        // Hide plotis when pole type changes
+        // Hide aukstis when pole type changes
         $('#plotisContainer').hide();
     });
 
     $('#poleLengthSelect').change(function() {
-        var selectedHeight = $(this).val();
+        var selectedWidth = $(this).val();
         var selectedType = $('.pole-type-btn.active').data('option');
-        updatePlotisSelect(selectedType, selectedHeight);
+        updateAukstisSelect(selectedType, selectedWidth);
     });
 
 
