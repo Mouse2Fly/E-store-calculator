@@ -19,9 +19,10 @@
                 <span class="section-number">2</span>
                 <h2>PASIRINKITE JŪSŲ POLIŲ TIPĄ</h2>
             </div>
-            <div class="button-group button-group-2">
+            <div class="button-group button-group-3">
                 <button class="option-btn pole-type-btn active" data-option="u-tipo">U TIPO</button>
                 <button class="option-btn pole-type-btn" data-option="m-tipo">M TIPO</button>
+                <button class="option-btn pole-type-btn" data-option="sraigtiniai">SRAIGTINIAI POLIAI</button>
             </div>
             <div class="error-message" id="error-section-2"></div>
         </div>
@@ -44,6 +45,9 @@
                 <option value="1200mm" data-type="m-tipo" style="display:none;">1200mm</option>
                 <option value="1400mm" data-type="m-tipo" style="display:none;">1400mm</option>
                 <option value="2050mm" data-type="m-tipo" style="display:none;">2050mm</option>
+                <option value="500mm" data-type="sraigtiniai" style="display:none;">500mm</option>
+                <option value="1000mm-s" data-type="sraigtiniai" style="display:none;">1000mm</option>
+                <option value="1200mm-s" data-type="sraigtiniai" style="display:none;">1200mm</option>
             </select>
             <div id="plotisContainer" style="display:none;">
                 <div class="pole-length-label">PLOTIS</div>
@@ -141,40 +145,8 @@
         </div>
 
         <div class="section" id="section-5">
-            <div class="section-header">
-                <span class="section-number">5</span>
-                <h2>PASIRINKITE JUNGIAMŲJŲ SERIJŲ TIPĄ</h2>
-            </div>
-            <div class="button-group button-group-2">
-                <button class="option-btn active" data-option="sraigtiniai">SRAIGTINIAI POLIAI</button>
-            </div>
-            <div class="error-message" id="error-section-5"></div>
-        </div>
-
-        <div class="section" id="section-6">
-            <div class="section-header">
-                <span class="section-number">6</span>
-                <h2>PASIRINKITE JUNGIAMŲJŲ SERIJŲ DYDĮ</h2>
-            </div>
-            <div class="pole-length-label">AUKŠTIS</div>
-            <select class="dropdown" id="section6AukstisSelect">
-                <option value=""></option>
-                <option value="500mm" data-type="sraigtiniai">500mm</option>
-                <option value="1000mm-s" data-type="sraigtiniai">1000mm</option>
-                <option value="1200mm-s" data-type="sraigtiniai">1200mm</option>
-            </select>
-            <div id="section6PlotisContainer" style="display:none;">
-                <div class="pole-length-label">PLOTIS</div>
-                <select class="dropdown" id="section6PlotisSelect">
-                    <option value=""></option>
-                </select>
-            </div>
-            <div class="error-message" id="error-section-6"></div>
-        </div>
-
-        <div class="section" id="section-7">
             <div class="section-header" id="section8Header">
-                <span class="section-number">7</span>
+                <span class="section-number">5</span>
                 <h2>MONTAVIMO ĮRANGOS NUOMA</h2>
             </div>
             <div class="tool-grid" id="section8Content">
@@ -183,12 +155,12 @@
                 <button class="tool-btn" data-tool="professional">ELEKTRINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
                 <button class="tool-btn" data-tool="hire">ELEKTRINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
             </div>
-            <div class="error-message" id="error-section-7"></div>
+            <div class="error-message" id="error-section-5"></div>
         </div>
 
-        <div class="section" id="section-9">
+        <div class="section" id="section-6">
             <div class="section-header">
-                <span class="section-number">9</span>
+                <span class="section-number">6</span>
                 <h2>ADDITIONAL ITEMS</h2>
             </div>
             <div class="checkbox-group">
@@ -231,14 +203,6 @@
                 <div class="result-row">
                     <div class="result-label">Struktūros matmenys</div>
                     <div class="result-value" id="result-strukturos-matmenys">3m x 2m (9.10ft x 6.7ft)</div>
-                </div>
-                <div class="result-row">
-                    <div class="result-label">Jungiamųjų serijų tipas</div>
-                    <div class="result-value" id="result-jungiamuju-tipas">M tipo</div>
-                </div>
-                <div class="result-row">
-                    <div class="result-label">Jungiamųjų serijų dydis</div>
-                    <div class="result-value" id="result-jungiamuju-dydis">1000mm x 68mm</div>
                 </div>
                 <div class="result-row" id="montavimoRow">
                     <div class="result-label">Montavimo įrangos nuoma</div>

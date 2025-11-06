@@ -91,6 +91,10 @@
     gap: 15px;
 }
 
+.construction-calculator-plugin .button-group-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .construction-calculator-plugin .button-group-2 {
     grid-template-columns: repeat(2, 1fr);
 }
