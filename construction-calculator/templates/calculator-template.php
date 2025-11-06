@@ -136,7 +136,7 @@
         <button class="calculate-btn" id="calculateBtn">APSKAIČIUOTI</button>
 
         <div class="results-section" id="resultsSection">
-            <h2 class="results-title">YOUR RESULTS</h2>
+            <h2 class="results-title">TAVO PASIRINKIMAI</h2>
             <div class="results-table">
                 <div class="result-row">
                     <div class="result-label">Pagalba</div>
