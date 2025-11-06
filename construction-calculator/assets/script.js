@@ -89,10 +89,6 @@ $(document).ready(function() {
 
     // Section 6 Plotis options mapping
     var section6PlotisOptions = {
-        'm-tipo': {
-            '1000mm': ['68mm'],
-            '1200mm': ['76mm', '89mm']
-        },
         'sraigtiniai': {
             '500mm': ['76mm', '89mm'],
             '1000mm-s': ['68mm', '76mm', '89mm'],
