@@ -283,10 +283,96 @@ $(document).ready(function() {
         $('#resultsSection').slideDown(600).addClass('show');
         $('#cartSection').slideDown(600).addClass('show');
         
+        // Calculate and populate cart
+        updateCart();
+        
         $('html, body').animate({
             scrollTop: $('#resultsSection').offset().top - 20
         }, 800);
     });
+    
+    function updateCart() {
+        // Get section 2 selection (pole type)
+        var section2Type = $('.pole-type-btn.active').data('option');
+        var section2Text = $('.pole-type-btn.active').text().trim();
+        
+        // Remove "POLIAI" if third option (JUNGIAMOJI SERIJA) is selected
+        if (section2Type === 'sraigtiniai') {
+            section2Text = section2Text.replace(/\s*POLIAI\s*$/i, '').trim();
+        }
+        
+        // Get section 3 selection (size - plotis x aukstis)
+        var plotis3 = $('#poleLengthSelect').val();
+        var aukstis3 = $('#plotisSelect').val();
+        var sizeText = '';
+        if (plotis3 && aukstis3) {
+            sizeText = plotis3 + ' x ' + aukstis3;
+        } else if (plotis3) {
+            sizeText = plotis3;
+        }
+        
+        // Get dimensions from Section 4
+        var widthM = parseFloat($('.dimension-row:first .dimension-input:eq(0)').val()) || 0;
+        var widthCm = parseFloat($('.dimension-row:first .dimension-input:eq(1)').val()) || 0;
+        var lengthM = parseFloat($('.dimension-row:eq(1) .dimension-input:eq(0)').val()) || 0;
+        var lengthCm = parseFloat($('.dimension-row:eq(1) .dimension-input:eq(1)').val()) || 0;
+        
+        // Convert to total meters
+        var X = widthM + (widthCm / 100);
+        var Y = lengthM + (lengthCm / 100);
+        
+        // Calculate quantity using the formula
+        var S = 2; // tarpas tarp polių
+        var P = 2 * (X + Y);
+        var N = P / S;
+        var V = (N + 4) * 1.05;
+        var quantity = Math.ceil(V); // Round up to nearest whole number
+        
+        // Get plotis width (remove "mm" and parse)
+        var plotisWidth = parseInt(plotis3);
+        
+        // Calculate price based on plotis (width) and tiered pricing
+        var pricePerUnit = 0;
+        var minimumCharge = 160;
+        
+        if (plotisWidth === 76) {
+            pricePerUnit = 15;
+        } else if (plotisWidth === 68) {
+            if (quantity > 80) {
+                pricePerUnit = 6;
+            } else if (quantity > 50) {
+                pricePerUnit = 7;
+            } else if (quantity > 30) {
+                pricePerUnit = 8;
+            } else {
+                pricePerUnit = 10;
+            }
+        } else {
+            // Default pricing for other widths (like 89mm, 71mm, 81mm, 101mm)
+            pricePerUnit = 15;
+        }
+        
+        var subtotal = quantity * pricePerUnit;
+        
+        // Apply minimum charge
+        if (subtotal < minimumCharge) {
+            subtotal = minimumCharge;
+        }
+        
+        // Build product name
+        var productName = section2Text + ' ' + sizeText;
+        
+        // Update cart products
+        var cartHtml = '<div class="cart-row">' +
+            '<div class="cart-col-product product-name">' + productName + '</div>' +
+            '<div class="cart-col-qty">' + quantity + '</div>' +
+            '<div class="cart-col-each">€' + pricePerUnit.toFixed(2) + '</div>' +
+            '<div class="cart-col-total">€' + subtotal.toFixed(2) + '</div>' +
+            '</div>';
+        
+        $('#cartProducts').html(cartHtml);
+        $('#cartSubtotal').html('€' + subtotal.toFixed(2) + ' <span class="vat">+VAT</span>');
+    }
 
     $('.add-cart-btn, .email-btn').click(function() {
         alert('This is a demo. In a real application, this would process the action.');
