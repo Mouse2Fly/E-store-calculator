@@ -33,8 +33,11 @@ $(document).ready(function() {
             '76mm': ['1200mm', '1400mm', '1600mm', '2050mm']
         },
         'sraigtiniai': {
-            '76mm': ['500mm', '1200mm'],
-            '89mm': ['500mm', '1000mm', '1200mm'],
+            '76mm-s': ['500mm', '1200mm'],
+            '89mm-s': ['500mm', '1000mm', '1200mm'],
+            '68mm': ['1000mm'],
+            '76mm': ['1000mm'],
+            '89mm': ['1000mm']
         }
     };
 
@@ -147,22 +150,16 @@ $(document).ready(function() {
                 return;
             }
             
-            if (isProfessional) {
-                // Professional installation: show ONLY 68mm, 76mm, 89mm for ALL pole types
-                // Ignore pole type filtering completely
-                if (professionalWidths.includes(optionValue)) {
-                    $option.show();
-                } else {
-                    $option.hide();
-                }
+            // Check if option belongs to selected pole type
+            var belongsToPoleType = !poleType || $option.data('type') === poleType;
+            
+            // If professional installation, only show 68mm, 76mm, 89mm
+            var allowedBySection1 = !isProfessional || professionalWidths.includes(optionValue);
+            
+            if (belongsToPoleType && allowedBySection1) {
+                $option.show();
             } else {
-                // Normal mode: filter by pole type only
-                var belongsToPoleType = !poleType || $option.data('type') === poleType;
-                if (belongsToPoleType) {
-                    $option.show();
-                } else {
-                    $option.hide();
-                }
+                $option.hide();
             }
         });
     }
