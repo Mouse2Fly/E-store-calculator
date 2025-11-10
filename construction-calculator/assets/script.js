@@ -6,16 +6,6 @@ $(document).ready(function() {
         products = data;
     });
     
-    // Centralized application state
-    var appState = {
-        section1: null,        // 'diy' or 'professional'
-        poleType: null,        // 'u-tipo', 'm-tipo', 'sraigtiniai'
-        selectedWidth: null    // '68mm', '76mm', etc.
-    };
-    
-    // Professional installation allowed widths (same for all pole types)
-    var professionalWidths = ['68mm', '76mm', '89mm'];
-    
     $('.option-btn').click(function() {
         $(this).siblings('.option-btn').removeClass('active');
         $(this).addClass('active');
@@ -79,25 +69,30 @@ $(document).ready(function() {
 
     $('.pole-type-btn').click(function() {
         var selectedType = $(this).data('option');
-        appState.poleType = selectedType;
+        var $select = $('#poleLengthSelect');
         
-        // Refresh options based on new pole type and Section 1 constraints
-        refreshPoleOptions();
+        // Reset select
+        $select.val('');
+        
+        // Hide all options except the placeholder
+        $select.find('option').each(function() {
+            if ($(this).val() === '') {
+                $(this).show();
+            } else if ($(this).data('type') === selectedType) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+        
+        // Hide aukstis when pole type changes
+        $('#plotisContainer').hide();
     });
 
     $('#poleLengthSelect').change(function() {
         var selectedWidth = $(this).val();
-        appState.selectedWidth = selectedWidth;
-        
         var selectedType = $('.pole-type-btn.active').data('option');
-        var isProfessional = appState.section1 === 'professional';
-        
-        // Don't show AUKSTIS for professional installation
-        if (isProfessional) {
-            $('#plotisContainer').hide();
-        } else {
-            updateAukstisSelect(selectedType, selectedWidth);
-        }
+        updateAukstisSelect(selectedType, selectedWidth);
     });
 
 
@@ -107,10 +102,8 @@ $(document).ready(function() {
     });
 
     // Section 1: Show/Hide Section 5 (equipment rental) based on installation option
-    // Apply constraints based on Section 1 selection
-    function applySection1Constraints() {
+    function toggleSection8() {
         var section1Selection = $('#section-1 .option-btn.active').data('option');
-        appState.section1 = section1Selection;
         
         if (section1Selection === 'diy') {
             // Show Section 5 when "NEREIKIA" is selected
@@ -119,53 +112,6 @@ $(document).ready(function() {
             // Hide Section 5 when professional installation is selected
             $('#section-5').hide();
         }
-        
-        // Refresh pole options with new constraints
-        refreshPoleOptions();
-    }
-    
-    // Refresh pole width (PLOTIS) options based on current state
-    function refreshPoleOptions() {
-        var $select = $('#poleLengthSelect');
-        var isProfessional = appState.section1 === 'professional';
-        var poleType = appState.poleType;
-        
-        // Reset select
-        $select.val('');
-        appState.selectedWidth = null;
-        
-        // Hide AUKSTIS container immediately if professional
-        if (isProfessional) {
-            $('#plotisContainer').hide();
-        }
-        
-        // Show/hide options based on constraints
-        $select.find('option').each(function() {
-            var $option = $(this);
-            var optionValue = $option.val();
-            
-            // Always show placeholder
-            if (optionValue === '') {
-                $option.show();
-                return;
-            }
-            
-            // Check if option belongs to selected pole type
-            var belongsToPoleType = !poleType || $option.data('type') === poleType;
-            
-            // If professional installation, only show 68mm, 76mm, 89mm
-            var allowedBySection1 = !isProfessional || professionalWidths.includes(optionValue);
-            
-            if (belongsToPoleType && allowedBySection1) {
-                $option.show();
-            } else {
-                $option.hide();
-            }
-        });
-    }
-    
-    function toggleSection8() {
-        applySection1Constraints();
     }
     
     // Listen to Section 1 button clicks
@@ -354,21 +300,12 @@ $(document).ready(function() {
         
         // Get width and height (clean up the -s suffix for sraigtiniai)
         var width = plotis3.replace('-s', '');
-        var height = aukstis3 ? aukstis3.replace('-s', '') : null;
+        var height = aukstis3.replace('-s', '');
         
         // Find matching product
-        var matchedProduct;
-        if (height) {
-            // Match on both width and height
-            matchedProduct = products.find(function(p) {
-                return p.product_type === productType && p.width === width && p.height === height;
-            });
-        } else {
-            // Professional installation - match on width and type only, pick first match
-            matchedProduct = products.find(function(p) {
-                return p.product_type === productType && p.width === width;
-            });
-        }
+        var matchedProduct = products.find(function(p) {
+            return p.product_type === productType && p.width === width && p.height === height;
+        });
         
         if (matchedProduct) {
             // Calculate quantity using formula
