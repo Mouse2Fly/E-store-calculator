@@ -101,17 +101,90 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
-    // Section 1: Show/Hide Section 5 (equipment rental) based on installation option
+    // Section 1: Show/Hide Section 5 (equipment rental) and modify Section 3 based on installation option
     function toggleSection8() {
         var section1Selection = $('#section-1 .option-btn.active').data('option');
         
         if (section1Selection === 'diy') {
             // Show Section 5 when "NEREIKIA" is selected
             $('#section-5').show();
+            
+            // Restore normal Section 3 behavior
+            restoreNormalSection3();
         } else {
             // Hide Section 5 when professional installation is selected
             $('#section-5').hide();
+            
+            // Simplify Section 3 to show only 68mm, 76mm, 89mm
+            simplifySection3ForProfessional();
         }
+    }
+    
+    function simplifySection3ForProfessional() {
+        var $plotisSelect = $('#poleLengthSelect');
+        
+        // Clear all options
+        $plotisSelect.empty();
+        
+        // Add placeholder
+        $plotisSelect.append('<option value=""></option>');
+        
+        // Add only the 3 professional options (without data-type so they show for all types)
+        $plotisSelect.append('<option value="68mm">68mm</option>');
+        $plotisSelect.append('<option value="76mm">76mm</option>');
+        $plotisSelect.append('<option value="89mm">89mm</option>');
+        
+        // Reset selection
+        $plotisSelect.val('');
+        
+        // Hide AUKŠTIS select completely
+        $('#plotisContainer').hide();
+    }
+    
+    function restoreNormalSection3() {
+        var $plotisSelect = $('#poleLengthSelect');
+        
+        // Clear current options
+        $plotisSelect.empty();
+        
+        // Restore all original options
+        $plotisSelect.append('<option value=""></option>');
+        
+        // U Tipo options
+        $plotisSelect.append('<option value="71mm" data-type="u-tipo">71mm</option>');
+        $plotisSelect.append('<option value="81mm" data-type="u-tipo">81mm</option>');
+        $plotisSelect.append('<option value="101mm" data-type="u-tipo">101mm</option>');
+        
+        // M Tipo options
+        $plotisSelect.append('<option value="68mm" data-type="m-tipo">68mm</option>');
+        $plotisSelect.append('<option value="76mm" data-type="m-tipo">76mm</option>');
+        
+        // Sraigtiniai options
+        $plotisSelect.append('<option value="76mm-s" data-type="sraigtiniai">76mm</option>');
+        $plotisSelect.append('<option value="89mm-s" data-type="sraigtiniai">89mm</option>');
+        $plotisSelect.append('<option value="68mm" data-type="sraigtiniai">68mm</option>');
+        $plotisSelect.append('<option value="76mm" data-type="sraigtiniai">76mm</option>');
+        $plotisSelect.append('<option value="89mm" data-type="sraigtiniai">89mm</option>');
+        
+        // Reset selection
+        $plotisSelect.val('');
+        
+        // Trigger the filter based on active pole type
+        var activeType = $('.pole-type-btn.active').data('option');
+        if (activeType) {
+            $plotisSelect.find('option').each(function() {
+                if ($(this).val() === '') {
+                    $(this).show();
+                } else if ($(this).data('type') === activeType) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+        
+        // Hide AUKŠTIS container initially
+        $('#plotisContainer').hide();
     }
     
     // Listen to Section 1 button clicks
@@ -298,9 +371,21 @@ $(document).ready(function() {
         };
         var productType = productTypeMap[poleType];
         
+        // Check if in professional mode
+        var isProfessionalMode = section1Option === 'professional';
+        
         // Get width and height (clean up the -s suffix for sraigtiniai)
         var width = plotis3.replace('-s', '');
-        var height = aukstis3.replace('-s', '');
+        var height = '';
+        
+        if (isProfessionalMode) {
+            // In professional mode, use Jungiamoji serija with 1000mm height
+            productType = 'Jungiamoji serija';
+            height = '1000mm';
+        } else {
+            // Normal mode - use selected height
+            height = aukstis3 ? aukstis3.replace('-s', '') : '';
+        }
         
         // Find matching product
         var matchedProduct = products.find(function(p) {
