@@ -16,25 +16,34 @@ $(document).ready(function() {
         'u-tipo': {
             '71mm': ['685mm'],
             '81mm': ['685mm'],
-            '101mm': ['885mm', '1000mm', '1085mm', '1300mm']
+            '101mm': ['885mm', '1000mm', '1085mm', '1300mm'],
+            '68mm-p': ['x'],
+            '76mm-p': ['x'],
+            '89mm-p': ['x']
         },
         'm-tipo': {
             '68mm': ['750mm', '1000mm', '1200mm', '1400mm'],
-            '76mm': ['1200mm', '1400mm', '1600mm', '2050mm']
+            '76mm': ['1200mm', '1400mm', '1600mm', '2050mm'],
+            '68mm-p': ['x'],
+            '76mm-p': ['x'],
+            '89mm-p': ['x']
         },
         'sraigtiniai': {
-            '76mm-s': ['500mm', '1200mm'],
-            '89mm-s': ['500mm', '1000mm', '1200mm'],
-            '68mm': ['1000mm'],
-            '76mm': ['1000mm'],
-            '89mm': ['1000mm']
+            '76mm': ['500mm', '1200mm'],
+            '89mm': ['500mm', '1000mm', '1200mm'],
+            '68mm-p': ['x'],
+            '76mm-p': ['x'],
+            '89mm-p': ['x']
         }
     };
 
     function updateAukstisSelect(poleType, width) {
         var $aukstisContainer = $('#plotisContainer');
         var $aukstisSelect = $('#plotisSelect');
-        
+
+        var helpType1 = $('#helpOption1')
+        var helpType2 = $('#helpOption2')
+
         if (!width) {
             $aukstisContainer.hide();
             return;
@@ -64,7 +73,12 @@ $(document).ready(function() {
             $aukstisSelect.removeClass('disabled');
         }
         
-        $aukstisContainer.show();
+        if (helpType1.hasClass('active')) {
+            $aukstisContainer.show();
+        }
+        else if (helpType2.hasClass('active')) {
+            $aukstisContainer.hide();
+        }
     }
 
     $('.pole-type-btn').click(function() {
@@ -127,12 +141,20 @@ $(document).ready(function() {
         $plotisSelect.empty();
         
         // Add placeholder
-        $plotisSelect.append('<option value=""></option>');
+        $plotisSelect.append('<option hidden disabled selected value=""></option>');
         
-        // Add only the 3 professional options (without data-type so they show for all types)
-        $plotisSelect.append('<option value="68mm">68mm</option>');
-        $plotisSelect.append('<option value="76mm">76mm</option>');
-        $plotisSelect.append('<option value="89mm">89mm</option>');
+        // Add only the 3 professional options
+        $plotisSelect.append('<option value="68mm-p" data-type="u-tipo">68mm</option>');
+        $plotisSelect.append('<option value="76mm-p" data-type="u-tipo">76mm</option>');
+        $plotisSelect.append('<option value="89mm-p" data-type="u-tipo">89mm</option>');
+       
+        $plotisSelect.append('<option value="68mm-p" data-type="m-tipo" style="display:none;">68mm</option>');
+        $plotisSelect.append('<option value="76mm-p" data-type="m-tipo" style="display:none;">76mm</option>');
+        $plotisSelect.append('<option value="89mm-p" data-type="m-tipo" style="display:none;">89mm</option>');
+        
+        $plotisSelect.append('<option value="68mm-p" data-type="sraigtiniai" style="display:none;">68mm</option>');
+        $plotisSelect.append('<option value="76mm-p" data-type="sraigtiniai" style="display:none;">76mm</option>');
+        $plotisSelect.append('<option value="89mm-p" data-type="sraigtiniai" style="display:none;">89mm</option>');
         
         // Reset selection
         $plotisSelect.val('');
@@ -148,7 +170,7 @@ $(document).ready(function() {
         $plotisSelect.empty();
         
         // Restore all original options
-        $plotisSelect.append('<option value=""></option>');
+        $plotisSelect.append('<option hidden disabled selected value=""></option>');
         
         // U Tipo options
         $plotisSelect.append('<option value="71mm" data-type="u-tipo">71mm</option>');
@@ -160,9 +182,6 @@ $(document).ready(function() {
         $plotisSelect.append('<option value="76mm" data-type="m-tipo">76mm</option>');
         
         // Sraigtiniai options
-        $plotisSelect.append('<option value="76mm-s" data-type="sraigtiniai">76mm</option>');
-        $plotisSelect.append('<option value="89mm-s" data-type="sraigtiniai">89mm</option>');
-        $plotisSelect.append('<option value="68mm" data-type="sraigtiniai">68mm</option>');
         $plotisSelect.append('<option value="76mm" data-type="sraigtiniai">76mm</option>');
         $plotisSelect.append('<option value="89mm" data-type="sraigtiniai">89mm</option>');
         

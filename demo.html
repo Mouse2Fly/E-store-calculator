@@ -58,8 +58,8 @@
                 <h2>AR JUMS REIKĖS PAGALBOS SU JŪSŲ PROJEKTŲ AR PATS JĮ DARYSITE?</h2>
             </div>
             <div class="button-group button-group-2">
-                <button class="option-btn active" data-option="diy">NEREIKIA</button>
-                <button class="option-btn" data-option="professional">PROFESIONALUS SRAIGTINIŲ POLIŲ MONTAVIMAS</button>
+                <button class="option-btn active" id="helpOption1" data-option="diy">NEREIKIA</button>
+                <button class="option-btn" id="helpOption2" data-option="professional">PROFESIONALUS SRAIGTINIŲ POLIŲ MONTAVIMAS</button>
             </div>
             <div class="error-message" id="error-section-1"></div>
         </div>
@@ -84,19 +84,19 @@
             </div>
             <div class="pole-length-label">PLOTIS</div>
             <select class="dropdown" id="poleLengthSelect">
-                <option value=""></option>
+                <option hidden disabled selected value=""></option>
                 <option value="71mm" data-type="u-tipo">71mm</option>
                 <option value="81mm" data-type="u-tipo">81mm</option>
                 <option value="101mm" data-type="u-tipo">101mm</option>
                 <option value="68mm" data-type="m-tipo" style="display:none;">68mm</option>
                 <option value="76mm" data-type="m-tipo" style="display:none;">76mm</option>
-                <option value="76mm-s" data-type="sraigtiniai" style="display:none;">76mm</option>
-                <option value="89mm-s" data-type="sraigtiniai" style="display:none;">89mm</option>
+                <option value="76mm" data-type="sraigtiniai" style="display:none;">76mm</option>
+                <option value="89mm" data-type="sraigtiniai" style="display:none;">89mm</option>
             </select>
             <div id="plotisContainer" style="display:none;">
                 <div class="pole-length-label">AUKŠTIS</div>
                 <select class="dropdown" id="plotisSelect">
-                    <option value=""></option>
+                    <option hidden disabled selected style="display:none;" value=""></option>
                 </select>
             </div>
             <div class="error-message" id="error-section-3"></div>
@@ -220,7 +220,7 @@
                 </div>
                 <div class="cart-subtotal">
                     <div class="subtotal-label">Subtotal:</div>
-                    <div class="subtotal-value">£301.32 <span class="vat">+VAT</span></div>
+                    <div class="subtotal-value">€0</div>
                 </div>
                 <div class="cart-actions">
                     <button class="cart-btn add-cart-btn">

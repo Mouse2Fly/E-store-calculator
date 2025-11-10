@@ -34,19 +34,19 @@
             </div>
             <div class="pole-length-label">PLOTIS</div>
             <select class="dropdown" id="poleLengthSelect">
-                <option value=""></option>
+                <option selected default style="display:none;" value=""></option>
                 <option value="71mm" data-type="u-tipo">71mm</option>
                 <option value="81mm" data-type="u-tipo">81mm</option>
                 <option value="101mm" data-type="u-tipo">101mm</option>
                 <option value="68mm" data-type="m-tipo" style="display:none;">68mm</option>
                 <option value="76mm" data-type="m-tipo" style="display:none;">76mm</option>
-                <option value="76mm-s" data-type="sraigtiniai" style="display:none;">76mm</option>
-                <option value="89mm-s" data-type="sraigtiniai" style="display:none;">89mm</option>
+                <option value="76mm" data-type="sraigtiniai" style="display:none;">76mm</option>
+                <option value="89mm" data-type="sraigtiniai" style="display:none;">89mm</option>
             </select>
             <div id="plotisContainer" style="display:none;">
                 <div class="pole-length-label">AUKŠTIS</div>
                 <select class="dropdown" id="plotisSelect">
-                    <option value=""></option>
+                    <option selected default style="display:none;" value=""></option>
                 </select>
             </div>
             <div class="error-message" id="error-section-3"></div>
