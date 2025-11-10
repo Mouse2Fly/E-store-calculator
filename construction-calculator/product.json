@@ -1,0 +1,135 @@
+[
+  {
+    "product_type": "U Tipo",
+    "product_name": "Sraigtinis polius U 71x685mm",
+    "width": "71mm",
+    "height": "685mm",
+    "price": 9.45
+  },
+  {
+    "product_type": "U Tipo",
+    "product_name": "Sraigtinis polius U 81x685mm",
+    "width": "81mm",
+    "height": "685mm",
+    "price": 9.45
+  },
+  {
+    "product_type": "U Tipo",
+    "product_name": "Sraigtinis polius U 101x885mm",
+    "width": "101mm",
+    "height": "885mm",
+    "price": 12.23
+  },
+  {
+    "product_type": "U Tipo",
+    "product_name": "Sraigtinis polius U 101x1000mm",
+    "width": "101mm",
+    "height": "1000mm",
+    "price": 13.58
+  },
+  {
+    "product_type": "U Tipo",
+    "product_name": "Sraigtinis polius U 101x1085mm",
+    "width": "101mm",
+    "height": "1085mm",
+    "price": 14.76
+  },
+  {
+    "product_type": "U Tipo",
+    "product_name": "Sraigtinis polius U 101x1300mm",
+    "width": "101mm",
+    "height": "1300mm",
+    "price": 16.83
+  },
+  {
+    "product_type": "M Tipo",
+    "product_name": "Sraigtinis polius M 68X750mm",
+    "width": "68mm",
+    "height": "750mm",
+    "price": 11.36
+  },
+  {
+    "product_type": "M Tipo",
+    "product_name": "Sraigtinis polius M 68X1000mm",
+    "width": "68mm",
+    "height": "1000mm",
+    "price": 15.43
+  },
+  {
+    "product_type": "M Tipo",
+    "product_name": "Sraigtinis polius M 68X1200mm",
+    "width": "68mm",
+    "height": "1200mm",
+    "price": 17.18
+  },
+  {
+    "product_type": "M Tipo",
+    "product_name": "Sraigtinis polius M 68X1400mm",
+    "width": "68mm",
+    "height": "1400mm",
+    "price": 20.5
+  },
+  {
+    "product_type": "M Tipo",
+    "product_name": "Sraigtinis polius M 76X1200mm",
+    "width": "76mm",
+    "height": "1200mm",
+    "price": 22.32
+  },
+  {
+    "product_type": "M Tipo",
+    "product_name": "Sraigtinis polius M 76X1400mm",
+    "width": "76mm",
+    "height": "1400mm",
+    "price": 29.4
+  },
+  {
+    "product_type": "M Tipo",
+    "product_name": "Sraigtinis polius M 76X1600mm",
+    "width": "76mm",
+    "height": "1600mm",
+    "price": 33.33
+  },
+  {
+    "product_type": "M Tipo",
+    "product_name": "Sraigtinis polius M 76X2050mm",
+    "width": "76mm",
+    "height": "2050mm",
+    "price": 43.86
+  },
+  {
+    "product_type": "Jungiamoji serija",
+    "product_name": "Sraigtinio pamato prailginimas 76x500mm",
+    "width": "76mm",
+    "height": "500mm",
+    "price": 16.5
+  },
+  {
+    "product_type": "Jungiamoji serija",
+    "product_name": "Sraigtinio pamato prailginimas su sriegiu 76x1000mm",
+    "width": "76mm",
+    "height": "1000mm",
+    "price": 26.18
+  },
+  {
+    "product_type": "Jungiamoji serija",
+    "product_name": "Sraigtinis polius 89X500mm jungiamoji serija",
+    "width": "89mm",
+    "height": "500mm",
+    "price": 18.7
+  },
+  {
+    "product_type": "Jungiamoji serija",
+    "product_name": "Sraigtinis polius 89X1000mm jungiamoji serija",
+    "width": "89mm",
+    "height": "1000mm",
+    "price": 31.64
+  },
+  {
+    "product_type": "Jungiamoji serija",
+    "product_name": "Sraigtinis polius 89X1200mm jungiamoji serija",
+    "width": "89mm",
+    "height": "1200mm",
+    "price": 48.54
+  }
+]
