@@ -150,16 +150,22 @@ $(document).ready(function() {
                 return;
             }
             
-            // Check if option belongs to selected pole type
-            var belongsToPoleType = !poleType || $option.data('type') === poleType;
-            
-            // If professional installation, only show 68mm, 76mm, 89mm
-            var allowedBySection1 = !isProfessional || professionalWidths.includes(optionValue);
-            
-            if (belongsToPoleType && allowedBySection1) {
-                $option.show();
+            if (isProfessional) {
+                // Professional installation: show ONLY 68mm, 76mm, 89mm for ALL pole types
+                // Ignore pole type filtering completely
+                if (professionalWidths.includes(optionValue)) {
+                    $option.show();
+                } else {
+                    $option.hide();
+                }
             } else {
-                $option.hide();
+                // Normal mode: filter by pole type only
+                var belongsToPoleType = !poleType || $option.data('type') === poleType;
+                if (belongsToPoleType) {
+                    $option.show();
+                } else {
+                    $option.hide();
+                }
             }
         });
     }
