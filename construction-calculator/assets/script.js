@@ -329,7 +329,7 @@ $(document).ready(function() {
             
             // Update cart display
             var cartHTML = '<div class="cart-row">' +
-                '<div class="cart-col-product product-name">' + matchedProduct.product_name + '</div>' +
+                '<div class="cart-col-product product-name"><a href="' + matchedProduct.link + '" target="_blank">' + matchedProduct.product_name + '</a></div>' +
                 '<div class="cart-col-qty">' + V + '</div>' +
                 '<div class="cart-col-each">€' + eachPrice + '</div>' +
                 '<div class="cart-col-total">€' + totalPrice + '</div>' +
