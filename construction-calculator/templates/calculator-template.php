@@ -168,18 +168,6 @@
                     <div class="cart-col-each">Each</div>
                     <div class="cart-col-total">Total</div>
                 </div>
-                <div class="cart-row">
-                    <div class="cart-col-product product-name">68mm x 850mm Self Install Ground Screw</div>
-                    <div class="cart-col-qty">9</div>
-                    <div class="cart-col-each">£23.99</div>
-                    <div class="cart-col-total">£215.91</div>
-                </div>
-                <div class="cart-row">
-                    <div class="cart-col-product product-name">Premium Bracket System for 4" x 2", 5" x 2" & 6" x 2" Joists</div>
-                    <div class="cart-col-qty">9</div>
-                    <div class="cart-col-each">£9.49</div>
-                    <div class="cart-col-total">£85.41</div>
-                </div>
                 <div class="cart-subtotal">
                     <div class="subtotal-label">Subtotal:</div>
                     <div class="subtotal-value">£301.32 <span class="vat">+VAT</span></div>
