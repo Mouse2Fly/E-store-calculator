@@ -23,11 +23,8 @@ $(document).ready(function() {
             '76mm': ['1200mm', '1400mm', '1600mm', '2050mm']
         },
         'sraigtiniai': {
-            '76mm-s': ['500mm', '1200mm'],
-            '89mm-s': ['500mm', '1000mm', '1200mm'],
-            '68mm': ['1000mm'],
-            '76mm': ['1000mm'],
-            '89mm': ['1000mm']
+            '76mm': ['500mm', '1200mm'],
+            '89mm': ['500mm', '1000mm', '1200mm'],
         }
     };
 
@@ -127,7 +124,7 @@ $(document).ready(function() {
         $plotisSelect.empty();
         
         // Add placeholder
-        $plotisSelect.append('<option value=""></option>');
+        $plotisSelect.append('<option disabled selected value=""></option>');
         
         // Add only the 3 professional options (without data-type so they show for all types)
         $plotisSelect.append('<option value="68mm">68mm</option>');
@@ -148,7 +145,7 @@ $(document).ready(function() {
         $plotisSelect.empty();
         
         // Restore all original options
-        $plotisSelect.append('<option value=""></option>');
+        $plotisSelect.append('<option disabled selected value=""></option>');
         
         // U Tipo options
         $plotisSelect.append('<option value="71mm" data-type="u-tipo">71mm</option>');
@@ -160,9 +157,6 @@ $(document).ready(function() {
         $plotisSelect.append('<option value="76mm" data-type="m-tipo">76mm</option>');
         
         // Sraigtiniai options
-        $plotisSelect.append('<option value="76mm-s" data-type="sraigtiniai">76mm</option>');
-        $plotisSelect.append('<option value="89mm-s" data-type="sraigtiniai">89mm</option>');
-        $plotisSelect.append('<option value="68mm" data-type="sraigtiniai">68mm</option>');
         $plotisSelect.append('<option value="76mm" data-type="sraigtiniai">76mm</option>');
         $plotisSelect.append('<option value="89mm" data-type="sraigtiniai">89mm</option>');
         
