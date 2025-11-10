@@ -19,7 +19,7 @@ $(document).ready(function() {
         },
         'sraigtiniai': {
             '76mm-s': ['500mm', '1200mm'],
-            '89mm-s': ['500mm', '1200mm'],
+            '89mm-s': ['500mm', '1000mm', '1200mm'],
             '68mm': ['1000mm'],
             '76mm': ['1000mm'],
             '89mm': ['1000mm']
