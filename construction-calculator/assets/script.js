@@ -1,5 +1,11 @@
 $(document).ready(function() {
     
+    // Load products from JSON
+    var products = [];
+    $.getJSON('construction-calculator/product.json', function(data) {
+        products = data;
+    });
+    
     $('.option-btn').click(function() {
         $(this).siblings('.option-btn').removeClass('active');
         $(this).addClass('active');
@@ -277,6 +283,63 @@ $(document).ready(function() {
         } else {
             var toolText = $('.tool-btn.active').text();
             $('#result-montavimo').text(toolText.charAt(0) + toolText.slice(1).toLowerCase());
+        }
+        
+        // Calculate cart items
+        // Clear existing cart rows
+        $('.cart-row').remove();
+        
+        // Get selected product details
+        var poleType = $('.pole-type-btn.active').data('option');
+        var productTypeMap = {
+            'u-tipo': 'U Tipo',
+            'm-tipo': 'M Tipo',
+            'sraigtiniai': 'Jungiamoji serija'
+        };
+        var productType = productTypeMap[poleType];
+        
+        // Get width and height (clean up the -s suffix for sraigtiniai)
+        var width = plotis3.replace('-s', '');
+        var height = aukstis3.replace('-s', '');
+        
+        // Find matching product
+        var matchedProduct = products.find(function(p) {
+            return p.product_type === productType && p.width === width && p.height === height;
+        });
+        
+        if (matchedProduct) {
+            // Calculate quantity using formula
+            // X = plotis (width in meters)
+            // Y = ilgis (length in meters)
+            // S = spacing (2 meters for now)
+            // P = 2(X+Y) - perimeter
+            // N = P/S - number of poles
+            // V = (N+4)*1.05 - final quantity with buffer
+            
+            var X = parseFloat(widthM) + (parseFloat(widthCm) / 100); // Convert to meters
+            var Y = parseFloat(lengthM) + (parseFloat(lengthCm) / 100);
+            var S = 2; // Spacing between poles
+            var P = 2 * (X + Y); // Perimeter
+            var N = P / S; // Number of poles
+            var V = Math.ceil((N + 4) * 1.05); // Final quantity (rounded up)
+            
+            // Calculate total price
+            var totalPrice = (V * matchedProduct.price).toFixed(2);
+            var eachPrice = matchedProduct.price.toFixed(2);
+            
+            // Update cart display
+            var cartHTML = '<div class="cart-row">' +
+                '<div class="cart-col-product product-name">' + matchedProduct.product_name + '</div>' +
+                '<div class="cart-col-qty">' + V + '</div>' +
+                '<div class="cart-col-each">€' + eachPrice + '</div>' +
+                '<div class="cart-col-total">€' + totalPrice + '</div>' +
+                '</div>';
+            
+            // Insert cart row before subtotal
+            $('.cart-subtotal').before(cartHTML);
+            
+            // Update subtotal
+            $('.subtotal-value').html('€' + totalPrice + ' <span class="vat">+VAT</span>');
         }
         
         $('#resultsSection').slideDown(600).addClass('show');
