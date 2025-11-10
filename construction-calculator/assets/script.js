@@ -14,8 +14,7 @@ $(document).ready(function() {
         },
         'm-tipo': {
             '68mm': ['750mm', '1000mm', '1200mm', '1400mm'],
-            '76mm': ['1200mm', '1400mm', '1600mm', '2050mm'],
-            '89mm': ['1200mm']
+            '76mm': ['1200mm', '1400mm', '1600mm', '2050mm']
         },
         'sraigtiniai': {
             '76mm-s': ['500mm', '1200mm'],

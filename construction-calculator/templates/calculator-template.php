@@ -40,7 +40,6 @@
                 <option value="101mm" data-type="u-tipo">101mm</option>
                 <option value="68mm" data-type="m-tipo" style="display:none;">68mm</option>
                 <option value="76mm" data-type="m-tipo" style="display:none;">76mm</option>
-                <option value="89mm" data-type="m-tipo" style="display:none;">89mm</option>
                 <option value="76mm-s" data-type="sraigtiniai" style="display:none;">76mm</option>
                 <option value="89mm-s" data-type="sraigtiniai" style="display:none;">89mm</option>
             </select>
