@@ -296,9 +296,12 @@ $(document).ready(function() {
         var section2Type = $('.pole-type-btn.active').data('option');
         var section2Text = $('.pole-type-btn.active').text().trim();
         
-        // Remove "POLIAI" if third option (JUNGIAMOJI SERIJA) is selected
-        if (section2Type === 'sraigtiniai') {
-            section2Text = section2Text.replace(/\s*POLIAI\s*$/i, '').trim();
+        // Convert to sentence case and add "poliai"
+        section2Text = section2Text.charAt(0).toUpperCase() + section2Text.slice(1).toLowerCase();
+        
+        // Add "poliai" unless it's JUNGIAMOJI SERIJA
+        if (section2Type !== 'sraigtiniai') {
+            section2Text = section2Text + ' poliai';
         }
         
         // Get section 3 selection (size - plotis x aukstis)
