@@ -1,0 +1,25 @@
+[
+    {
+        "product_name": "Sraigtinis polius",
+        "width": "68mm",
+        "height": "x",
+        "price":
+        [10, 8, 7, 6],
+        "price_qty": 
+        ["<30", ">30", ">50", ">80"]
+    },
+    {
+        "product_name": "Sraigtinis polius",
+        "width": "76mm",
+        "height": "x",
+        "price": [15],
+        "price_qty": [">0"]
+    },
+    {
+        "product_name": "Sraigtinis polius",
+        "width": "89mm",
+        "height": "x",
+        "price": [15],
+        "price_qty": [">0"]
+  }
+]
