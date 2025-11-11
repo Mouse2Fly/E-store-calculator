@@ -5,12 +5,37 @@ $(document).ready(function() {
     $.getJSON('construction-calculator/product.json', function(data) {
         products = data;
     });
+
+    var profProducts = [];
+    $.getJSON('construction-calculator/profesional.json', function(data) {
+        profProducts = data;
+    });
     
     $('.option-btn').click(function() {
         $(this).siblings('.option-btn').removeClass('active');
         $(this).addClass('active');
     });
 
+    function calculateAmount(widthM, widthCm, lengthM, lengthCm) {
+        
+        // Calculate quantity using formula
+        // X = width in meters
+        // Y = length in meters
+        // S = spacing (2 meters for now)
+        // P = 2(X+Y) - perimeter
+        // N = P/S - number of poles
+        // V = (N+4)*1.05 - final quantity with buffer
+            
+        var X = parseFloat(widthM) + (parseFloat(widthCm) / 100); // Convert to meters
+        var Y = parseFloat(lengthM) + (parseFloat(lengthCm) / 100);
+        var S = 2; // Spacing between poles
+        var P = 2 * (X + Y); // Perimeter
+        var N = P / S; // Number of poles
+        var V = Math.ceil((N + 4) * 1.05); // Final quantity (rounded up)
+        
+        return V;
+    }
+        
     // Aukstis options mapping
     var aukstisOptions = {
         'u-tipo': {
@@ -325,6 +350,8 @@ $(document).ready(function() {
     }
 
     $('#calculateBtn').click(function() {
+
+        console.log('Calculate button clicked');
         // Validate form
         var isValid = validateForm();
         
@@ -350,8 +377,15 @@ $(document).ready(function() {
         $('#result-poliu-tipas').text(section2Text.charAt(0) + section2Text.slice(1).toLowerCase());
         
         // Section 3: Polių dydis (Pole size - PLOTIS and AUKŠTIS)
+
         var plotis3 = $('#poleLengthSelect').val();
         var aukstis3 = $('#plotisSelect').val();
+
+        if(section1Option === 'professional') {
+            plotis3 = plotis3.slice(0, -2);
+            aukstis3 = '1000mm';
+        }
+
         if (plotis3 && aukstis3) {
             $('#result-poliu-dydis').text(plotis3 + ' x ' + aukstis3);
         } else if (plotis3) {
@@ -397,70 +431,144 @@ $(document).ready(function() {
         var height = '';
         
         if (section1Option === 'professional') {
-            // In professional mode, use Jungiamoji serija with 1000mm height
-            productType = 'Jungiamoji serija';
-            height = '1000mm';
-        } else {
-            // Normal mode - use selected height
-            height = aukstis3 ? aukstis3.replace('-p', '') : '';
-        }
-        
-        // Find matching product
-        var matchedProduct = products.find(function(p) {
-            return p.product_type === productType && p.width === width && p.height === height;
-        });
-        
-        if (matchedProduct) {
-            // Calculate quantity using formula
-            // X = plotis (width in meters)
-            // Y = ilgis (length in meters)
-            // S = spacing (2 meters for now)
-            // P = 2(X+Y) - perimeter
-            // N = P/S - number of poles
-            // V = (N+4)*1.05 - final quantity with buffer
-            
-            var X = parseFloat(widthM) + (parseFloat(widthCm) / 100); // Convert to meters
-            var Y = parseFloat(lengthM) + (parseFloat(lengthCm) / 100);
-            var S = 2; // Spacing between poles
-            var P = 2 * (X + Y); // Perimeter
-            var N = P / S; // Number of poles
-            var V = Math.ceil((N + 4) * 1.05); // Final quantity (rounded up)
-            
+
+            if($('#typeOption1').hasClass('active')){
+                productType = 'U Tipo';
+            }
+            else if($('#typeOption2').hasClass('active')){
+                productType = 'M Tipo';
+            }
+            else if($('#typeOption3').hasClass('active')){
+                productType = 'Jungiamoji serija';
+            }
+            height = 'x';
+
+            var matchedProduct = profProducts.find(function(p) {
+                return p.width === width;
+            });
+
+            console.log('Matched professional product:', matchedProduct);
+
+            var productTotal = 0;
+            var eachPrice = 0;
+            var totalAmount = calculateAmount(widthM, widthCm, lengthM, lengthCm);
+
+            console.log('Total amount of poles needed:', totalAmount);
+
+            if(width === '68mm')
+            {
+                console.log('Calculating price for 68mm poles');
+
+                if(matchedProduct.discount_qty.length > 1)
+                {
+                    for(var i=0; i<matchedProduct.discount_qty.length; i++)
+                    {
+                        if(matchedProduct.discount_qty[i] < totalAmount  && i+1 === matchedProduct.discount_qty.length)
+                        {
+                            productTotal = (totalAmount * matchedProduct.price[i]);
+                            eachPrice = matchedProduct.price[i];
+                            console.log('Price tier ' + i+1 + ' applied');
+                            break;
+
+                        }
+                        else if (matchedProduct.discount_qty[i] < totalAmount < matchedProduct.discount_qty[i+1])
+                        {
+                            productTotal = (totalAmount * matchedProduct.price[i]);
+                            eachPrice = matchedProduct.price[i];
+                            console.log('Price tier ' + i+1 + ' applied');
+                        }
+                    }
+                }
+                else
+                {
+                productTotal = (totalAmount * matchedProduct.price[0]);
+                eachPrice = matchedProduct.price[0];
+                console.log('Standard price applied');
+                }
+            }
+            else
+            {
+                productTotal = (totalAmount * matchedProduct.price[0]);
+                eachPrice = matchedProduct.price[0];
+                console.log('Standard price applied');
+            }
+
+            var cartHTML = '<div class="cart-row">' +
+                '<div class="cart-col-product product-name">' + matchedProduct.product_name + '</div>' +
+                '<div class="cart-col-qty">' + totalAmount + '</div>' +
+                '<div class="cart-col-each">€' + eachPrice.toFixed(2) + '</div>' +
+                '<div class="cart-col-total">€' + productTotal.toFixed(2) + '</div>' +
+                '</div>';
+
+            var installationFee = 160;
+            var installationHTML = '<div class="cart-row">' +
+                '<div class="cart-col-product product-name">Profesionalus sraigtinių polių montavimas</div>' +
+                '<div class="cart-col-qty">1</div>' +
+                '<div class="cart-col-each">€' + installationFee.toFixed(2) + '</div>' +
+                '<div class="cart-col-total">€' + installationFee.toFixed(2) + '</div>' +
+                '</div>';
+                
+
+            $('.cart-subtotal').before(installationHTML);
+            $('.cart-subtotal').before(cartHTML);
+         
+            var cartTotal = parseFloat(productTotal+installationFee);    
+
+        } else if(section1Option === 'diy'){
+
+            // Find matching product
+            var matchedProduct = products.find(function(p) {
+                return p.product_type === productType && p.width === width && p.height === aukstis3;
+            });
+                
+            var totalAmount = calculateAmount(widthM, widthCm, lengthM, lengthCm);
+
             // Calculate total price
-            var productTotal = (V * matchedProduct.price).toFixed(2);
-            var eachPrice = matchedProduct.price.toFixed(2);
-            
+            var productTotal = 0;
+            var eachPrice = 0;
+
+            if (300 < productTotal < 499) {
+                productTotal = (totalAmount * (matchedProduct.price * 0.95)).toFixed(2);
+                eachPrice = (matchedProduct.price * 0.95).toFixed(2);
+                console.log('5% discount applied');
+            }
+            else if (500 < productTotal < 999) {
+                productTotal = (totalAmount * (matchedProduct.price * 0.90)).toFixed(2);
+                eachPrice = (matchedProduct.price * 0.90).toFixed(2);
+                console.log('10% discount applied');
+            }
+            else if ( productTotal > 1000) {
+                productTotal = (totalAmount * (matchedProduct.price * 0.85)).toFixed(2);
+                eachPrice = (matchedProduct.price * 0.85).toFixed(2);
+                console.log('15% discount applied');
+            }
+            else{
+               productTotal = (totalAmount * matchedProduct.price).toFixed(2);
+                eachPrice = matchedProduct.price.toFixed(2);
+                console.log('No discount applied');
+            }
+                
             // Update cart display
             var cartHTML = '<div class="cart-row">' +
                 '<div class="cart-col-product product-name"><a href="' + matchedProduct.link + '" target="_blank">' + matchedProduct.product_name + '</a></div>' +
-                '<div class="cart-col-qty">' + V + '</div>' +
+                '<div class="cart-col-qty">' + totalAmount + '</div>' +
                 '<div class="cart-col-each">€' + eachPrice + '</div>' +
                 '<div class="cart-col-total">€' + productTotal + '</div>' +
                 '</div>';
-            
+                
             // Insert cart row before subtotal
             $('.cart-subtotal').before(cartHTML);
-            
+                
             // Initialize cart total
             var cartTotal = parseFloat(productTotal);
+
+        } else {
+            console.log('No matching product found');
+            return;
+        }      
             
-            // Add professional installation service charge if in professional mode
-            if (section1Option === 'professional') {
-                var installationFee = 160.00;
-                var installationHTML = '<div class="cart-row">' +
-                    '<div class="cart-col-product product-name">Profesionalus sraigtinių polių montavimas</div>' +
-                    '<div class="cart-col-qty">1</div>' +
-                    '<div class="cart-col-each">€' + installationFee.toFixed(2) + '</div>' +
-                    '<div class="cart-col-total">€' + installationFee.toFixed(2) + '</div>' +
-                    '</div>';
-                
-                $('.cart-subtotal').before(installationHTML);
-                cartTotal += installationFee;
-            }
-            
-            // Update subtotal
-            $('.subtotal-value').html('€' + cartTotal.toFixed(2) + ' <span class="vat">+VAT</span>');
-        }
+        // Update subtotal
+        $('.subtotal-value').html('€' + cartTotal.toFixed(2));
         
         $('#resultsSection').slideDown(600).addClass('show');
         $('#cartSection').slideDown(600).addClass('show');
