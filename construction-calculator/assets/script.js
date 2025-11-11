@@ -369,11 +369,12 @@ $(document).ready(function() {
         
         
         // Section 5: Montavimo įrangos nuoma (Equipment rental)
-        // If section 1 is "Profesionalus sraigtinių polių montavimas", set to "Nereikia"
+        // If section 1 is "Profesionalus sraigtinių polių montavimas", hide the row
         var section1Option = $('#section-1 .option-btn.active').data('option');
         if (section1Option === 'professional') {
-            $('#result-montavimo').text('Nereikia');
+            $('#montavimoRow').hide();
         } else {
+            $('#montavimoRow').show();
             var toolText = $('.tool-btn.active').text();
             $('#result-montavimo').text(toolText.charAt(0) + toolText.slice(1).toLowerCase());
         }
