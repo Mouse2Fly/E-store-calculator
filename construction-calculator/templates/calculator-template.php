@@ -34,7 +34,7 @@
             </div>
             <div class="pole-length-label">PLOTIS</div>
             <select class="dropdown" id="poleLengthSelect">
-                <option selected default style="display:none;" value=""></option>
+                <option hidden disabled selected value=""></option>
                 <option value="71mm" data-type="u-tipo">71mm</option>
                 <option value="81mm" data-type="u-tipo">81mm</option>
                 <option value="101mm" data-type="u-tipo">101mm</option>
@@ -46,7 +46,7 @@
             <div id="plotisContainer" style="display:none;">
                 <div class="pole-length-label">AUKŠTIS</div>
                 <select class="dropdown" id="plotisSelect">
-                    <option selected default style="display:none;" value=""></option>
+                    <option hidden disabled selected value=""></option>
                 </select>
             </div>
             <div class="error-message" id="error-section-3"></div>

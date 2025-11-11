@@ -31,6 +31,9 @@ $(document).ready(function() {
         'sraigtiniai': {
             '76mm': ['500mm', '1200mm'],
             '89mm': ['500mm', '1000mm', '1200mm'],
+            '68mm-p': ['x'],
+            '76mm-p': ['x'],
+            '89mm-p': ['x']
         }
     };
 
@@ -138,7 +141,7 @@ $(document).ready(function() {
         $plotisSelect.empty();
         
         // Add placeholder
-        $plotisSelect.append('<option disabled selected value=""></option>');
+        $plotisSelect.append('<option hidden disabled selected value=""></option>');
 
         
         // Add only the 3 professional options
@@ -168,7 +171,7 @@ $(document).ready(function() {
         $plotisSelect.empty();
         
         // Restore all original options
-        $plotisSelect.append('<option disabled selected value=""></option>');
+        $plotisSelect.append('<option hidden disabled selected value=""></option>');
         
         // U Tipo options
         $plotisSelect.append('<option value="71mm" data-type="u-tipo">71mm</option>');
