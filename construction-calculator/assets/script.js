@@ -429,7 +429,7 @@ $(document).ready(function() {
             var V = Math.ceil((N + 4) * 1.05); // Final quantity (rounded up)
             
             // Calculate total price
-            var totalPrice = (V * matchedProduct.price).toFixed(2);
+            var productTotal = (V * matchedProduct.price).toFixed(2);
             var eachPrice = matchedProduct.price.toFixed(2);
             
             // Update cart display
@@ -437,14 +437,31 @@ $(document).ready(function() {
                 '<div class="cart-col-product product-name"><a href="' + matchedProduct.link + '" target="_blank">' + matchedProduct.product_name + '</a></div>' +
                 '<div class="cart-col-qty">' + V + '</div>' +
                 '<div class="cart-col-each">€' + eachPrice + '</div>' +
-                '<div class="cart-col-total">€' + totalPrice + '</div>' +
+                '<div class="cart-col-total">€' + productTotal + '</div>' +
                 '</div>';
             
             // Insert cart row before subtotal
             $('.cart-subtotal').before(cartHTML);
             
+            // Initialize cart total
+            var cartTotal = parseFloat(productTotal);
+            
+            // Add professional installation service charge if in professional mode
+            if (isProfessionalMode) {
+                var installationFee = 160.00;
+                var installationHTML = '<div class="cart-row">' +
+                    '<div class="cart-col-product product-name">Profesionalus sraigtinių polių montavimas</div>' +
+                    '<div class="cart-col-qty">1</div>' +
+                    '<div class="cart-col-each">€' + installationFee.toFixed(2) + '</div>' +
+                    '<div class="cart-col-total">€' + installationFee.toFixed(2) + '</div>' +
+                    '</div>';
+                
+                $('.cart-subtotal').before(installationHTML);
+                cartTotal += installationFee;
+            }
+            
             // Update subtotal
-            $('.subtotal-value').html('€' + totalPrice + ' <span class="vat">+VAT</span>');
+            $('.subtotal-value').html('€' + cartTotal.toFixed(2) + ' <span class="vat">+VAT</span>');
         }
         
         $('#resultsSection').slideDown(600).addClass('show');
