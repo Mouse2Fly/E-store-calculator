@@ -8,8 +8,8 @@
                 <h2>AR JUMS REIKĖS PAGALBOS SU JŪSŲ PROJEKTŲ AR PATS JĮ DARYSITE?</h2>
             </div>
             <div class="button-group button-group-2">
-                <button class="option-btn active" data-option="diy">NEREIKIA</button>
-                <button class="option-btn" data-option="professional">PROFESIONALUS SRAIGTINIŲ POLIŲ MONTAVIMAS</button>
+                <button class="option-btn active" id="helpOption1" data-option="diy">NEREIKIA</button>
+                <button class="option-btn" id="helpOption2" data-option="professional">PROFESIONALUS SRAIGTINIŲ POLIŲ MONTAVIMAS</button>
             </div>
             <div class="error-message" id="error-section-1"></div>
         </div>

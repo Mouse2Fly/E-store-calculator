@@ -392,20 +392,17 @@ $(document).ready(function() {
         };
         var productType = productTypeMap[poleType];
         
-        // Check if in professional mode
-        var isProfessionalMode = section1Option === 'professional';
-        
         // Get width and height (clean up the -s suffix for sraigtiniai)
-        var width = plotis3.replace('-s', '');
+        var width = plotis3;
         var height = '';
         
-        if (isProfessionalMode) {
+        if (section1Option === 'professional') {
             // In professional mode, use Jungiamoji serija with 1000mm height
             productType = 'Jungiamoji serija';
             height = '1000mm';
         } else {
             // Normal mode - use selected height
-            height = aukstis3 ? aukstis3.replace('-s', '') : '';
+            height = aukstis3 ? aukstis3.replace('-p', '') : '';
         }
         
         // Find matching product
@@ -448,7 +445,7 @@ $(document).ready(function() {
             var cartTotal = parseFloat(productTotal);
             
             // Add professional installation service charge if in professional mode
-            if (isProfessionalMode) {
+            if (section1Option === 'professional') {
                 var installationFee = 160.00;
                 var installationHTML = '<div class="cart-row">' +
                     '<div class="cart-col-product product-name">Profesionalus sraigtinių polių montavimas</div>' +
