@@ -127,7 +127,7 @@
                 <button class="tool-btn active" data-tool="none">NEREIKIA</button>
                 <button class="tool-btn" data-tool="manual">RANKINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
                 <button class="tool-btn" data-tool="professional">ELEKTRINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
-                <button class="tool-btn" data-tool="hire">ELEKTRINIO POLIŲ SUKIMO ĮRANKIO NUOMA</button>
+                <button class="tool-btn" data-tool="heavy">ĮRANGOS NUOMA DIDELIŲ SRAIGTINIŲ PAMATŲ MONTAVIMUI</button>
             </div>
             <div class="error-message" id="error-section-5"></div>
         </div>

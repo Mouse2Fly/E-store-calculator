@@ -579,13 +579,23 @@ $(document).ready(function() {
                     '</div>';
                 $('.cart-subtotal').before(equipmentHTML);
                 subtotalBeforeDiscount += equipmentCost;
-            } else if (selectedTool === 'professional' || selectedTool === 'hire') {
+            } else if (selectedTool === 'professional') {
                 equipmentCost = 39.00;
                 var equipmentHTML = '<div class="cart-row">' +
                     '<div class="cart-col-product product-name">Elektrinio polių sukimo įrankio nuoma</div>' +
                     '<div class="cart-col-qty">1</div>' +
                     '<div class="cart-col-each">€39.00/para</div>' +
                     '<div class="cart-col-total">€39.00</div>' +
+                    '</div>';
+                $('.cart-subtotal').before(equipmentHTML);
+                subtotalBeforeDiscount += equipmentCost;
+            } else if (selectedTool === 'heavy') {
+                equipmentCost = 140.00;
+                var equipmentHTML = '<div class="cart-row">' +
+                    '<div class="cart-col-product product-name">Įrangos nuoma didelių sraigtinių pamatų montavimui</div>' +
+                    '<div class="cart-col-qty">1</div>' +
+                    '<div class="cart-col-each">€140.00/para</div>' +
+                    '<div class="cart-col-total">€140.00</div>' +
                     '</div>';
                 $('.cart-subtotal').before(equipmentHTML);
                 subtotalBeforeDiscount += equipmentCost;
