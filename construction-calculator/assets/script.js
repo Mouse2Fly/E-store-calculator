@@ -565,6 +565,32 @@ $(document).ready(function() {
             
             var subtotalBeforeDiscount = parseFloat(productTotal);
             
+            // Add equipment rental if selected (Section 5)
+            var selectedTool = $('.tool-btn.active').data('tool');
+            var equipmentCost = 0;
+            
+            if (selectedTool === 'manual') {
+                equipmentCost = 5.00;
+                var equipmentHTML = '<div class="cart-row">' +
+                    '<div class="cart-col-product product-name">Rankinio polių sukimo įrankio nuoma</div>' +
+                    '<div class="cart-col-qty">1</div>' +
+                    '<div class="cart-col-each">€5.00/para</div>' +
+                    '<div class="cart-col-total">€5.00</div>' +
+                    '</div>';
+                $('.cart-subtotal').before(equipmentHTML);
+                subtotalBeforeDiscount += equipmentCost;
+            } else if (selectedTool === 'professional' || selectedTool === 'hire') {
+                equipmentCost = 39.00;
+                var equipmentHTML = '<div class="cart-row">' +
+                    '<div class="cart-col-product product-name">Elektrinio polių sukimo įrankio nuoma</div>' +
+                    '<div class="cart-col-qty">1</div>' +
+                    '<div class="cart-col-each">€39.00/para</div>' +
+                    '<div class="cart-col-total">€39.00</div>' +
+                    '</div>';
+                $('.cart-subtotal').before(equipmentHTML);
+                subtotalBeforeDiscount += equipmentCost;
+            }
+            
             // Calculate discount based on subtotal
             var discountPercent = 0;
             var discountAmount = 0;
