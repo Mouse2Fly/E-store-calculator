@@ -509,10 +509,35 @@ $(document).ready(function() {
                 '</div>';
                 
 
-            $('.cart-subtotal').before(installationHTML);
             $('.cart-subtotal').before(cartHTML);
+            $('.cart-subtotal').before(installationHTML);
          
-            var cartTotal = parseFloat(productTotal+installationFee);    
+            var subtotalBeforeDiscount = parseFloat(productTotal) + installationFee;
+            
+            // Calculate discount based on subtotal
+            var discountPercent = 0;
+            var discountAmount = 0;
+            
+            if (subtotalBeforeDiscount >= 300 && subtotalBeforeDiscount < 500) {
+                discountPercent = 5;
+            } else if (subtotalBeforeDiscount >= 500 && subtotalBeforeDiscount < 1000) {
+                discountPercent = 10;
+            } else if (subtotalBeforeDiscount >= 1000) {
+                discountPercent = 15;
+            }
+            
+            if (discountPercent > 0) {
+                discountAmount = (subtotalBeforeDiscount * discountPercent / 100);
+                var discountHTML = '<div class="cart-row discount-row">' +
+                    '<div class="cart-col-product product-name">Nuolaida (' + discountPercent + '%)</div>' +
+                    '<div class="cart-col-qty"></div>' +
+                    '<div class="cart-col-each"></div>' +
+                    '<div class="cart-col-total">-€' + discountAmount.toFixed(2) + '</div>' +
+                    '</div>';
+                $('.cart-subtotal').before(discountHTML);
+            }
+            
+            var cartTotal = subtotalBeforeDiscount - discountAmount;    
 
         } else if(section1Option === 'diy'){
 
@@ -523,30 +548,9 @@ $(document).ready(function() {
                 
             var totalAmount = calculateAmount(widthM, widthCm, lengthM, lengthCm);
 
-            // Calculate total price
-            var productTotal = 0;
-            var eachPrice = 0;
-
-            if (300 < productTotal < 499) {
-                productTotal = (totalAmount * (matchedProduct.price * 0.95)).toFixed(2);
-                eachPrice = (matchedProduct.price * 0.95).toFixed(2);
-                console.log('5% discount applied');
-            }
-            else if (500 < productTotal < 999) {
-                productTotal = (totalAmount * (matchedProduct.price * 0.90)).toFixed(2);
-                eachPrice = (matchedProduct.price * 0.90).toFixed(2);
-                console.log('10% discount applied');
-            }
-            else if ( productTotal > 1000) {
-                productTotal = (totalAmount * (matchedProduct.price * 0.85)).toFixed(2);
-                eachPrice = (matchedProduct.price * 0.85).toFixed(2);
-                console.log('15% discount applied');
-            }
-            else{
-               productTotal = (totalAmount * matchedProduct.price).toFixed(2);
-                eachPrice = matchedProduct.price.toFixed(2);
-                console.log('No discount applied');
-            }
+            // Calculate total price (before discount)
+            var productTotal = (totalAmount * matchedProduct.price).toFixed(2);
+            var eachPrice = matchedProduct.price.toFixed(2);
                 
             // Update cart display
             var cartHTML = '<div class="cart-row">' +
@@ -558,9 +562,34 @@ $(document).ready(function() {
                 
             // Insert cart row before subtotal
             $('.cart-subtotal').before(cartHTML);
+            
+            var subtotalBeforeDiscount = parseFloat(productTotal);
+            
+            // Calculate discount based on subtotal
+            var discountPercent = 0;
+            var discountAmount = 0;
+            
+            if (subtotalBeforeDiscount >= 300 && subtotalBeforeDiscount < 500) {
+                discountPercent = 5;
+            } else if (subtotalBeforeDiscount >= 500 && subtotalBeforeDiscount < 1000) {
+                discountPercent = 10;
+            } else if (subtotalBeforeDiscount >= 1000) {
+                discountPercent = 15;
+            }
+            
+            if (discountPercent > 0) {
+                discountAmount = (subtotalBeforeDiscount * discountPercent / 100);
+                var discountHTML = '<div class="cart-row discount-row">' +
+                    '<div class="cart-col-product product-name">Nuolaida (' + discountPercent + '%)</div>' +
+                    '<div class="cart-col-qty"></div>' +
+                    '<div class="cart-col-each"></div>' +
+                    '<div class="cart-col-total">-€' + discountAmount.toFixed(2) + '</div>' +
+                    '</div>';
+                $('.cart-subtotal').before(discountHTML);
+            }
                 
             // Initialize cart total
-            var cartTotal = parseFloat(productTotal);
+            var cartTotal = subtotalBeforeDiscount - discountAmount;
 
         } else {
             console.log('No matching product found');
