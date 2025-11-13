@@ -400,10 +400,10 @@ $(document).ready(function() {
         var lengthM = $('.dimension-row:eq(1) .dimension-input:eq(0)').val();
         var lengthCm = $('.dimension-row:eq(1) .dimension-input:eq(1)').val();
         
-        // Format as z,yy x z,yy (meters,centimeters)
+        // Format as z,yym x z,yym (meters,centimeters)
         var widthCmPadded = widthCm.toString().padStart(2, '0');
         var lengthCmPadded = lengthCm.toString().padStart(2, '0');
-        $('#result-strukturos-matmenys').text(widthM + ',' + widthCmPadded + ' x ' + lengthM + ',' + lengthCmPadded);
+        $('#result-strukturos-matmenys').text(widthM + ',' + widthCmPadded + 'm x ' + lengthM + ',' + lengthCmPadded + 'm');
         
         
         // Section 5: Montavimo įrangos nuoma (Equipment rental)
