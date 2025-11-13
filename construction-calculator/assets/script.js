@@ -36,12 +36,13 @@ $(document).ready(function() {
         return V;
     }
         
-    // Aukstis options mapping
+    // Aukstis options mapping (based on product.json)
     var aukstisOptions = {
         'u-tipo': {
-            '71mm': ['685mm'],
-            '81mm': ['685mm'],
-            '101mm': ['885mm', '1000mm', '1085mm', '1300mm'],
+            '68mm': ['685mm'],
+            '76mm': ['685mm'],
+            '89mm': ['885mm', '1000mm', '1085mm'],
+            '101mm': ['1300mm'],
             '68mm-p': ['x'],
             '76mm-p': ['x'],
             '89mm-p': ['x']
@@ -49,13 +50,14 @@ $(document).ready(function() {
         'm-tipo': {
             '68mm': ['750mm', '1000mm', '1200mm', '1400mm'],
             '76mm': ['1200mm', '1400mm', '1600mm', '2050mm'],
+            '89mm': ['1200mm'],
             '68mm-p': ['x'],
             '76mm-p': ['x'],
             '89mm-p': ['x']
         },
         'sraigtiniai': {
-            '76mm': ['500mm', '1200mm'],
-            '89mm': ['500mm', '1000mm', '1200mm'],
+            '76mm': ['500mm', '1000mm'],
+            '89mm': ['500mm', '1000mm'],
             '68mm-p': ['x'],
             '76mm-p': ['x'],
             '89mm-p': ['x']
@@ -195,17 +197,19 @@ $(document).ready(function() {
         // Clear current options
         $plotisSelect.empty();
         
-        // Restore all original options
+        // Restore all original options (based on product.json)
         $plotisSelect.append('<option hidden disabled selected value=""></option>');
         
         // U Tipo options
-        $plotisSelect.append('<option value="71mm" data-type="u-tipo">71mm</option>');
-        $plotisSelect.append('<option value="81mm" data-type="u-tipo">81mm</option>');
+        $plotisSelect.append('<option value="68mm" data-type="u-tipo">68mm</option>');
+        $plotisSelect.append('<option value="76mm" data-type="u-tipo">76mm</option>');
+        $plotisSelect.append('<option value="89mm" data-type="u-tipo">89mm</option>');
         $plotisSelect.append('<option value="101mm" data-type="u-tipo">101mm</option>');
         
         // M Tipo options
         $plotisSelect.append('<option value="68mm" data-type="m-tipo">68mm</option>');
         $plotisSelect.append('<option value="76mm" data-type="m-tipo">76mm</option>');
+        $plotisSelect.append('<option value="89mm" data-type="m-tipo">89mm</option>');
         
         // Sraigtiniai options
         $plotisSelect.append('<option value="76mm" data-type="sraigtiniai">76mm</option>');
