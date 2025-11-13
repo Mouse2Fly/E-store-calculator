@@ -55,6 +55,7 @@ $(document).ready(function() {
             '89mm-p': ['x']
         },
         'sraigtiniai': {
+            '68mm': ['1000mm'],
             '76mm': ['500mm', '1000mm'],
             '89mm': ['500mm', '1000mm'],
             '68mm-p': ['x'],
@@ -210,6 +211,7 @@ $(document).ready(function() {
         $plotisSelect.append('<option value="89mm" data-type="m-tipo">89mm</option>');
         
         // Sraigtiniai options
+        $plotisSelect.append('<option value="68mm" data-type="sraigtiniai">68mm</option>');
         $plotisSelect.append('<option value="76mm" data-type="sraigtiniai">76mm</option>');
         $plotisSelect.append('<option value="89mm" data-type="sraigtiniai">89mm</option>');
         
@@ -548,9 +550,22 @@ $(document).ready(function() {
         } else if(section1Option === 'diy'){
 
             // Find matching product
+            console.log('Looking for product with:', {
+                productType: productType,
+                width: width,
+                height: aukstis3
+            });
+            
             var matchedProduct = products.find(function(p) {
                 return p.product_type === productType && p.width === width && p.height === aukstis3;
             });
+            
+            console.log('Matched product:', matchedProduct);
+            
+            if (!matchedProduct) {
+                alert('Produktas nerastas! Patikrinkite savo pasirinkimą.');
+                return;
+            }
                 
             var totalAmount = calculateAmount(widthM, widthCm, lengthM, lengthCm);
 
