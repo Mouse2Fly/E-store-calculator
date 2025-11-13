@@ -399,7 +399,11 @@ $(document).ready(function() {
         var widthCm = $('.dimension-row:first .dimension-input:eq(1)').val();
         var lengthM = $('.dimension-row:eq(1) .dimension-input:eq(0)').val();
         var lengthCm = $('.dimension-row:eq(1) .dimension-input:eq(1)').val();
-        $('#result-strukturos-matmenys').text(widthM + 'm ' + widthCm + 'cm x ' + lengthM + 'm ' + lengthCm + 'cm');
+        
+        // Format as z,yy x z,yy (meters,centimeters)
+        var widthCmPadded = widthCm.toString().padStart(2, '0');
+        var lengthCmPadded = lengthCm.toString().padStart(2, '0');
+        $('#result-strukturos-matmenys').text(widthM + ',' + widthCmPadded + ' x ' + lengthM + ',' + lengthCmPadded);
         
         
         // Section 5: Montavimo įrangos nuoma (Equipment rental)
