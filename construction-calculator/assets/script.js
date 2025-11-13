@@ -522,30 +522,8 @@ $(document).ready(function() {
          
             var subtotalBeforeDiscount = parseFloat(productTotal) + installationFee;
             
-            // Calculate discount based on subtotal
-            var discountPercent = 0;
-            var discountAmount = 0;
-            
-            if (subtotalBeforeDiscount >= 300 && subtotalBeforeDiscount < 500) {
-                discountPercent = 5;
-            } else if (subtotalBeforeDiscount >= 500 && subtotalBeforeDiscount < 1000) {
-                discountPercent = 10;
-            } else if (subtotalBeforeDiscount >= 1000) {
-                discountPercent = 15;
-            }
-            
-            if (discountPercent > 0) {
-                discountAmount = (subtotalBeforeDiscount * discountPercent / 100);
-                var discountHTML = '<div class="cart-row discount-row">' +
-                    '<div class="cart-col-product product-name">Nuolaida (' + discountPercent + '%)</div>' +
-                    '<div class="cart-col-qty"></div>' +
-                    '<div class="cart-col-each"></div>' +
-                    '<div class="cart-col-total">-€' + discountAmount.toFixed(2) + '</div>' +
-                    '</div>';
-                $('.cart-subtotal').before(discountHTML);
-            }
-            
-            var cartTotal = subtotalBeforeDiscount - discountAmount;    
+            // No discount applied in Professional mode
+            var cartTotal = subtotalBeforeDiscount;    
 
         } else if(section1Option === 'diy'){
 
