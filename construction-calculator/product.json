@@ -2,7 +2,7 @@
   {
     "product_type": "U Tipo",
     "product_name": "Sraigtinis polius U 71x685mm",
-    "width": "71mm",
+    "width": "68mm",
     "height": "685mm",
     "price": 9.45,
     "link": "https://bebetono.lt/preke/sraigtinis-polius-u-71x685mm/"
@@ -10,7 +10,7 @@
   {
     "product_type": "U Tipo",
     "product_name": "Sraigtinis polius U 81x685mm",
-    "width": "81mm",
+    "width": "76mm",
     "height": "685mm",
     "price": 9.45,
     "link": "https://bebetono.lt/preke/sraigtinis-polius-u-81-685mm/"
@@ -18,7 +18,7 @@
   {
     "product_type": "U Tipo",
     "product_name": "Sraigtinis polius U 101x885mm",
-    "width": "101mm",
+    "width": "89mm",
     "height": "885mm",
     "price": 12.23,
     "link": "https://bebetono.lt/preke/sraigtinis-polius-u-101-885mm/"
@@ -26,7 +26,7 @@
   {
     "product_type": "U Tipo",
     "product_name": "Sraigtinis polius U 101x1000mm",
-    "width": "101mm",
+    "width": "89mm",
     "height": "1000mm",
     "price": 13.58,
     "link": "https://bebetono.lt/preke/sraigtinis-polius-u-101-1000mm/"
@@ -34,7 +34,7 @@
   {
     "product_type": "U Tipo",
     "product_name": "Sraigtinis polius U 101x1085mm",
-    "width": "101mm",
+    "width": "89mm",
     "height": "1085mm",
     "price": 14.76,
     "link": "https://bebetono.lt/preke/sraigtinis-polius-u-101-1085mm/"
@@ -112,6 +112,14 @@
     "link": "https://bebetono.lt/preke/sraigtinis-polius-m-76x2050mm/"
   },
   {
+    "product_type": "M Tipo",
+    "product_name": "Sraigtinis polius 89X1200mm jungiamoji serija",
+    "width": "89mm",
+    "height": "1200mm",
+    "price": 43.86,
+    "link": "https://bebetono.lt/preke/sraigtinis-polius-89x1200mm-jungiamoji-serija/"
+  },
+  {
     "product_type": "Jungiamoji serija",
     "product_name": "Sraigtinio pamato prailginimas 76x500mm",
     "width": "76mm",
@@ -143,12 +151,4 @@
     "price": 31.64,
     "link": "https://bebetono.lt/preke/sraigtinis-polius-89x1000mm-jungiamoji-serija/"
   },
-  {
-    "product_type": "Jungiamoji serija",
-    "product_name": "Sraigtinis polius 89X1200mm jungiamoji serija",
-    "width": "89mm",
-    "height": "1200mm",
-    "price": 48.54,
-    "link": "https://bebetono.lt/preke/sraigtinis-polius-89x1200mm-jungiamoji-serija/"
-  }
 ]
