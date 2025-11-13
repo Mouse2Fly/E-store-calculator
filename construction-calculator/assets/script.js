@@ -243,6 +243,55 @@ $(document).ready(function() {
     
     // Set initial state on page load
     toggleSection8();
+    
+    // Handle equipment rental selection - show/hide date selector
+    $('.tool-btn').click(function() {
+        var selectedTool = $(this).data('tool');
+        
+        if (selectedTool === 'none') {
+            $('#rentalDatesContainer').hide();
+            $('#rentalDaysDisplay').hide();
+        } else {
+            $('#rentalDatesContainer').show();
+        }
+        
+        // Clear dates when switching equipment
+        $('#rentalStartDate').val('');
+        $('#rentalEndDate').val('');
+        $('#rentalDaysDisplay').hide();
+    });
+    
+    // Calculate rental days when dates are selected
+    function calculateRentalDays() {
+        var startDate = $('#rentalStartDate').val();
+        var endDate = $('#rentalEndDate').val();
+        
+        if (startDate && endDate) {
+            var start = new Date(startDate);
+            var end = new Date(endDate);
+            
+            // Calculate difference in days
+            var timeDiff = end.getTime() - start.getTime();
+            var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            
+            if (daysDiff < 0) {
+                $('#rentalDaysDisplay').html('<span style="color: #d32f2f;">Pabaigos data turi būti vėlesnė nei pradžios data</span>').show();
+                return -1;
+            } else if (daysDiff === 0) {
+                $('#rentalDaysDisplay').text('Nuomos laikotarpis: 1 diena').show();
+                return 1;
+            } else {
+                $('#rentalDaysDisplay').text('Nuomos laikotarpis: ' + (daysDiff + 1) + ' dienos').show();
+                return daysDiff + 1;
+            }
+        }
+        
+        $('#rentalDaysDisplay').hide();
+        return 0;
+    }
+    
+    // Listen to date changes
+    $('#rentalStartDate, #rentalEndDate').on('change', calculateRentalDays);
 
     $('.spinner-btn.up').click(function() {
         var input = $(this).closest('.input-box').find('.dimension-input');
@@ -348,7 +397,26 @@ $(document).ready(function() {
             }
         }
         
-        // Section 6 (Additional items) is optional - no validation needed
+        // Section 5: Validate rental dates if equipment is selected
+        var selectedTool = $('.tool-btn.active').data('tool');
+        if (selectedTool !== 'none') {
+            var startDate = $('#rentalStartDate').val();
+            var endDate = $('#rentalEndDate').val();
+            
+            if (!startDate || !endDate) {
+                $('#section-5').addClass('has-error');
+                $('#error-section-5').text('Prašome pasirinkti nuomos pradžios ir pabaigos datas');
+                isValid = false;
+            } else {
+                var start = new Date(startDate);
+                var end = new Date(endDate);
+                if (end < start) {
+                    $('#section-5').addClass('has-error');
+                    $('#error-section-5').text('Pabaigos data turi būti vėlesnė nei pradžios data');
+                    isValid = false;
+                }
+            }
+        }
         
         return isValid;
     }
@@ -567,34 +635,46 @@ $(document).ready(function() {
             // Add equipment rental if selected (Section 5)
             var selectedTool = $('.tool-btn.active').data('tool');
             var equipmentCost = 0;
+            var rentalDays = 1;
+            
+            // Get rental period if equipment is selected
+            if (selectedTool !== 'none') {
+                rentalDays = calculateRentalDays();
+                if (rentalDays <= 0) {
+                    rentalDays = 1; // Default to 1 day if invalid
+                }
+            }
             
             if (selectedTool === 'manual') {
-                equipmentCost = 5.00;
+                var dailyRate = 5.00;
+                equipmentCost = dailyRate * rentalDays;
                 var equipmentHTML = '<div class="cart-row">' +
                     '<div class="cart-col-product product-name">Rankinio polių sukimo įrankio nuoma</div>' +
-                    '<div class="cart-col-qty">1</div>' +
-                    '<div class="cart-col-each">€5.00/para</div>' +
-                    '<div class="cart-col-total">€5.00</div>' +
+                    '<div class="cart-col-qty">' + rentalDays + ' dienos</div>' +
+                    '<div class="cart-col-each">€' + dailyRate.toFixed(2) + '/para</div>' +
+                    '<div class="cart-col-total">€' + equipmentCost.toFixed(2) + '</div>' +
                     '</div>';
                 $('.cart-subtotal').before(equipmentHTML);
                 subtotalBeforeDiscount += equipmentCost;
             } else if (selectedTool === 'professional') {
-                equipmentCost = 39.00;
+                var dailyRate = 39.00;
+                equipmentCost = dailyRate * rentalDays;
                 var equipmentHTML = '<div class="cart-row">' +
                     '<div class="cart-col-product product-name">Elektrinio polių sukimo įrankio nuoma</div>' +
-                    '<div class="cart-col-qty">1</div>' +
-                    '<div class="cart-col-each">€39.00/para</div>' +
-                    '<div class="cart-col-total">€39.00</div>' +
+                    '<div class="cart-col-qty">' + rentalDays + ' dienos</div>' +
+                    '<div class="cart-col-each">€' + dailyRate.toFixed(2) + '/para</div>' +
+                    '<div class="cart-col-total">€' + equipmentCost.toFixed(2) + '</div>' +
                     '</div>';
                 $('.cart-subtotal').before(equipmentHTML);
                 subtotalBeforeDiscount += equipmentCost;
             } else if (selectedTool === 'heavy') {
-                equipmentCost = 140.00;
+                var dailyRate = 140.00;
+                equipmentCost = dailyRate * rentalDays;
                 var equipmentHTML = '<div class="cart-row">' +
                     '<div class="cart-col-product product-name">Įrangos nuoma didelių sraigtinių pamatų montavimui</div>' +
-                    '<div class="cart-col-qty">1</div>' +
-                    '<div class="cart-col-each">€140.00/para</div>' +
-                    '<div class="cart-col-total">€140.00</div>' +
+                    '<div class="cart-col-qty">' + rentalDays + ' dienos</div>' +
+                    '<div class="cart-col-each">€' + dailyRate.toFixed(2) + '/para</div>' +
+                    '<div class="cart-col-total">€' + equipmentCost.toFixed(2) + '</div>' +
                     '</div>';
                 $('.cart-subtotal').before(equipmentHTML);
                 subtotalBeforeDiscount += equipmentCost;
