@@ -32,7 +32,7 @@
                 <span class="section-number">3</span>
                 <h2>PASIRINKITE DYDĮ</h2>
             </div>
-            <div class="pole-length-label">PLOTIS</div>
+            <div class="pole-length-label">POLIO SKERSMUO</div>
             <select class="dropdown" id="poleLengthSelect">
                 <option hidden disabled selected value=""></option>
                 <option value="71mm" data-type="u-tipo">71mm</option>
