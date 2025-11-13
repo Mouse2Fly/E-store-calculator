@@ -203,7 +203,6 @@ $(document).ready(function() {
         $plotisSelect.append('<option value="68mm" data-type="u-tipo">68mm</option>');
         $plotisSelect.append('<option value="76mm" data-type="u-tipo">76mm</option>');
         $plotisSelect.append('<option value="89mm" data-type="u-tipo">89mm</option>');
-        $plotisSelect.append('<option value="101mm" data-type="u-tipo">101mm</option>');
         
         // M Tipo options
         $plotisSelect.append('<option value="68mm" data-type="m-tipo">68mm</option>');
